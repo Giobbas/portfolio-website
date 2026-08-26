@@ -4,7 +4,10 @@
 (function () {
   'use strict';
 
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* Su schermi piccoli: nessuna parallasse e nessuna animazione di entrata.
+     Restano i contatori e la barra della timeline. */
+  var small = window.matchMedia('(max-width: 900px)').matches;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches || small;
 
   /* ---------- Menu mobile e pannello "Tutte le sezioni" ---------- */
   var navToggle = document.getElementById('nav-toggle');
@@ -128,7 +131,7 @@
   moveParallax();
 
   /* ---------- Contatori dei numeri chiave ---------- */
-  if (!reduced && 'IntersectionObserver' in window) {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
     var counters = document.querySelectorAll('[data-count]');
     var run = function (el) {
       var target = parseInt(el.getAttribute('data-count'), 10);
