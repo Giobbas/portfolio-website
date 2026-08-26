@@ -107,7 +107,7 @@
 
   function moveParallax() {
     var vh = window.innerHeight;
-    if (window.innerWidth <= 900) {
+    if (window.innerWidth <= 900 || window.matchMedia('(hover: none)').matches) {
       parallax.forEach(function (p) { p.el.style.transform = ''; });
       return;
     }
@@ -148,8 +148,8 @@
       if (label) label.style.color = on ? '#1b1e24' : '#5f656c';
     });
     projPanels.forEach(function (p, k) {
-      if (k === i) { p.removeAttribute('hidden'); p.style.opacity = '1'; p.style.transform = 'none'; }
-      else p.setAttribute('hidden', '');
+      if (k === i) { p.removeAttribute('hidden'); p.style.display = ''; p.style.opacity = '1'; p.style.transform = 'none'; }
+      else { p.setAttribute('hidden', ''); p.style.display = 'none'; }
     });
   }
   projTabs.forEach(function (t, i) {

@@ -36,6 +36,9 @@ html { scroll-behavior: smooth; }
     #nav-links { display:none !important; }
     #nav-toggle { display:inline-flex !important; }
   }
+  @media (max-width: 900px), (hover: none) {
+    [data-parallax] { transform: none !important; }
+  }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
   }
