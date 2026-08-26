@@ -1,0 +1,11 @@
+# CSS e JS hanno nomi fissi (nessun hash nel filename): senza questa regola
+# Cloudflare Pages li serve con max-age=14400, quindi per 4 ore il browser
+# usa la copia in cache anche dopo un deploy. Se il markup nuovo dipende da
+# JS nuovo, la pagina si rompe in silenzio. Forziamo la rivalidazione:
+# il browser chiede sempre, e riceve 304 quando il file non e cambiato.
+
+/css/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/js/*
+  Cache-Control: public, max-age=0, must-revalidate
