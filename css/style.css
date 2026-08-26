@@ -1,0 +1,84 @@
+/* Giovanna Basilico — portfolio
+   Palette e valori base come custom properties; il resto degli stili
+   e' inline nel markup, cosi ogni blocco e' modificabile dove si legge. */
+:root {
+  --ink: #1b1e24;
+  --body: #3d434b;
+  --muted: #4d535c;
+  --soft: #5f656c;
+  --bg: #fbfaf8;
+  --bg-tint: #f1f4f5;
+  --bg-accent: #eaf1f5;
+  --line: #e5e3de;
+  --line-soft: #dfe6e9;
+  --petrol: #17506b;
+  --petrol-dark: #0f3a4e;
+  --petrol-deep: #103b4e;
+  --sand: #faf5ea;
+  --sand-strong: #f3e5c6;
+  --gold: #8a6a2f;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --max-width: 1120px;
+}
+html { scroll-behavior: smooth; }
+  body { margin:0; background:#fbfaf8; color:#1b1e24; font-family:'Instrument Sans', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing:antialiased; }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  a { color:#17506b; text-decoration:none; }
+  a:hover { color:#0f3a4e; }
+  h1,h2,h3,h4,p,ul,ol,li,figure { margin:0; }
+  ul { padding:0; list-style:none; }
+  :focus-visible { outline:2px solid #17506b; outline-offset:3px; border-radius:3px; }
+  @media (max-width: 860px) {
+    #seo-geo h2 { white-space: normal !important; }
+  }
+  @media (max-width: 1040px) {
+    #nav-links { display:none !important; }
+    #nav-toggle { display:inline-flex !important; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+/* stati hover e pseudo-elementi estratti dal markup */
+.x1:hover{color:#17506b}
+.x2:hover{color:#17506b}
+.x3:hover{color:#17506b}
+.x4:hover{color:#17506b}
+.x5:hover{color:#17506b}
+.x6:hover{background:#0f3a4e}
+.x7:hover{background:#eaf1f5;color:#17506b}
+.x8:hover{background:#eaf1f5;color:#17506b}
+.x9:hover{background:#eaf1f5;color:#17506b}
+.x10:hover{background:#eaf1f5;color:#17506b}
+.x11:hover{background:#eaf1f5;color:#17506b}
+.x12:hover{background:#eaf1f5;color:#17506b}
+.x13:hover{background:#eaf1f5;color:#17506b}
+.x14:hover{background:#eaf1f5;color:#17506b}
+.x15:hover{background:#eaf1f5;color:#17506b}
+.x16:hover{transform:translateY(-3px);border-color:#17506b;box-shadow:0 10px 26px rgba(16,59,78,.10)}
+.x17:hover{transform:translateY(-3px);border-color:#17506b;box-shadow:0 10px 26px rgba(16,59,78,.10)}
+.x18:hover{transform:translateY(-3px);border-color:#17506b;box-shadow:0 10px 26px rgba(16,59,78,.10)}
+.x19:hover{transform:translateY(-3px);border-color:#17506b;box-shadow:0 10px 26px rgba(16,59,78,.10)}
+.x20:hover{transform:translateY(-3px);border-color:#17506b;box-shadow:0 10px 26px rgba(16,59,78,.10)}
+.x21:hover{transform:translateY(-3px);border-color:#17506b;box-shadow:0 10px 26px rgba(16,59,78,.10)}
+.x22:hover{transform:translateY(-3px);border-color:#17506b;box-shadow:0 10px 26px rgba(16,59,78,.10)}
+.x23:hover{transform:translateY(-3px);border-color:#17506b;box-shadow:0 10px 26px rgba(16,59,78,.10)}
+.x24:hover{transform:translateY(-3px);border-color:#17506b;box-shadow:0 10px 26px rgba(16,59,78,.10)}
+.x25:hover{transform:translateY(-3px);border-color:#17506b}
+.x26:hover{transform:translateY(-3px);border-color:#17506b}
+.x27:hover{transform:translateY(-3px);border-color:#17506b}
+.x28:hover{transform:translateY(-3px);border-color:#17506b}
+.x29:hover{transform:translateY(-3px);border-color:#17506b}
+.x30:hover{transform:translateY(-3px);border-color:#17506b}
+.x31:hover{transform:translateY(-3px);border-color:#17506b}
+.x32:hover{transform:translateY(-3px);border-color:#17506b}
+.x33:hover{transform:translateY(-3px);border-color:#17506b}
+.x34:hover{background:#f1f4f5;padding-left:16px}
+.x35:hover{background:#f1f4f5;padding-left:16px}
+.x36:hover{background:#f1f4f5;padding-left:16px}
+.x37:hover{background:#8ab4c8;border-color:#8ab4c8}
+.x38:hover{border-color:#fbfaf8}
+.x39:hover{border-color:#fbfaf8}
+.x40:hover{background:#0f3a4e;transform:translateY(-3px)}
