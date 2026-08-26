@@ -14,10 +14,11 @@ portfolio-website/
 │   ├── Giovanna_Basilico_CV_2026.pdf   CV scaricabile
 │   ├── favicon-petrol.png
 │   └── images/
-│       ├── giovanna-basilico.png       foto hero
+│       ├── giovanna-basilico.jpg       foto hero (640px, JPEG)
 │       ├── jb-logo-petrol.png          logo header
 │       ├── jb-logo.png                 logo footer (invertito via CSS)
-│       └── betty-boys-logo.png         logo associazione
+│       ├── betty-boys-logo.png         logo associazione
+│       └── clients/                    loghi dei progetti selezionati
 ├── robots.txt
 └── sitemap.xml
 ```

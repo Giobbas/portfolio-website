@@ -107,6 +107,10 @@
 
   function moveParallax() {
     var vh = window.innerHeight;
+    if (window.innerWidth <= 900) {
+      parallax.forEach(function (p) { p.el.style.transform = ''; });
+      return;
+    }
     parallax.forEach(function (p) {
       var r = p.el.getBoundingClientRect();
       var off = (r.top + r.height / 2 - vh / 2) * -p.f;
@@ -129,6 +133,36 @@
   spy();
   timeline();
   moveParallax();
+
+  /* ---------- Selettore dei progetti (loghi cliente) ---------- */
+  var projTabs = Array.prototype.slice.call(document.querySelectorAll('[data-proj-tab]'));
+  var projPanels = Array.prototype.slice.call(document.querySelectorAll('[data-proj-panel]'));
+  function selectProject(i) {
+    projTabs.forEach(function (t, k) {
+      var on = k === i;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.style.borderColor = on ? '#17506b' : '#e5e3de';
+      var img = t.querySelector('img');
+      if (img) { img.style.filter = on ? 'none' : 'grayscale(1)'; img.style.opacity = on ? '1' : '.5'; }
+      var label = t.querySelectorAll('span')[1];
+      if (label) label.style.color = on ? '#1b1e24' : '#5f656c';
+    });
+    projPanels.forEach(function (p, k) {
+      if (k === i) { p.removeAttribute('hidden'); p.style.opacity = '1'; p.style.transform = 'none'; }
+      else p.setAttribute('hidden', '');
+    });
+  }
+  projTabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { selectProject(i); });
+    t.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var n = (i + d + projTabs.length) % projTabs.length;
+      selectProject(n);
+      projTabs[n].focus();
+    });
+  });
 
   /* ---------- Contatori dei numeri chiave ---------- */
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
