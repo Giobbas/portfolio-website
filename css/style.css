@@ -167,3 +167,14 @@ html { scroll-behavior: smooth; }
 .skip-link:focus { left: 0; }
 /* il target del salto non ha un contorno proprio: lo togliamo */
 #top:focus { outline: none; }
+
+/* --- Frecce di navigazione ai capi della sequenza --------------------
+   I pulsanti usano l'attributo nativo disabled: esce dal percorso di
+   Tab e viene annunciato dagli screen reader, cosa che una semplice
+   classe non farebbe. Qui serve solo lo stato visivo, perche' gli
+   stili dei pulsanti sono inline (cursor:pointer incluso). */
+button[data-proj-move][disabled],
+button[data-cli-move][disabled] {
+  opacity: .3;
+  cursor: default;
+}

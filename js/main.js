@@ -150,6 +150,14 @@
   var projPanels = Array.prototype.slice.call(document.querySelectorAll('[data-proj-panel]'));
   var projIndex = 0;
   projTabs.forEach(function (t, k) { t.setAttribute('tabindex', k === projIndex ? '0' : '-1'); });
+  /* le frecce si spengono ai capi della sequenza */
+  function syncProjArrows() {
+    var a = document.querySelector('[data-proj-move="-1"]');
+    var b = document.querySelector('[data-proj-move="1"]');
+    if (a) a.disabled = projIndex === 0;
+    if (b) b.disabled = projIndex === projTabs.length - 1;
+  }
+  syncProjArrows();
   function selectProject(i) {
     projTabs.forEach(function (t, k) {
       var on = k === i;
@@ -177,6 +185,7 @@
       strip.scrollTo({ left: t.offsetLeft - (strip.clientWidth - t.offsetWidth) / 2, behavior: 'smooth' });
     }
     projIndex = i;
+    syncProjArrows();
   }
   /* delegazione sul documento: nessun listener perso, tap affidabile su iOS */
   document.addEventListener('click', function (e) {
@@ -185,8 +194,9 @@
     if (t) { selectProject(projTabs.indexOf(t)); return; }
     var m = e.target.closest('[data-proj-move]');
     if (!m) return;
-    var n = projTabs.length;
-    selectProject((((projIndex + Number(m.getAttribute('data-proj-move'))) % n) + n) % n);
+    var next = projIndex + Number(m.getAttribute('data-proj-move'));
+    if (next < 0 || next > projTabs.length - 1) return;
+    selectProject(next);
   });
   document.addEventListener('keydown', function (e) {
     var t = e.target.closest && e.target.closest('[data-proj-tab]');
@@ -321,7 +331,18 @@
         d.style.transform = k === i ? 'scale(1.3)' : 'none';
       });
     };
-    cliGrid.addEventListener('scroll', syncCliDots, { passive: true });
+    /* le frecce si spengono ai due estremi dello scorrimento */
+    var syncCliArrows = function () {
+      var max = cliGrid.scrollWidth - cliGrid.clientWidth;
+      var a = document.querySelector('[data-cli-move="-1"]');
+      var b = document.querySelector('[data-cli-move="1"]');
+      if (a) a.disabled = cliGrid.scrollLeft <= 2;
+      if (b) b.disabled = cliGrid.scrollLeft >= max - 2;
+    };
+    var syncCli = function () { syncCliDots(); syncCliArrows(); };
+    cliGrid.addEventListener('scroll', syncCli, { passive: true });
+    window.addEventListener('resize', syncCliArrows);
+    syncCliArrows();
     document.addEventListener('click', function (e) {
       var m = e.target.closest && e.target.closest('[data-cli-move]');
       if (!m) return;
