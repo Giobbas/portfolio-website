@@ -179,21 +179,19 @@ button[data-cli-move][disabled] {
   cursor: default;
 }
 
-/* --- Cursore della frase rotante -------------------------------------
-   La classe .attivo la mette il JavaScript: senza, il markup mostra la
-   lista completa e un cursore lampeggiante in fondo non avrebbe senso. */
-#ambiti-rotanti.attivo::after {
+
+/* Cursore della digitazione dell'h1.
+   NON lampeggia di proposito: il caret che pulsa e' il segnale piu'
+   forte di "effetto terminale" ed e' cio' che rende l'animazione di
+   cattivo gusto. Qui e' un trattino sottile che accompagna la
+   scrittura e sparisce appena finisce. */
+#ruolo-hero.digita::after {
   content: "";
   display: inline-block;
-  width: .055em;
+  width: .04em;
   height: .78em;
-  margin-left: .09em;
-  vertical-align: -.08em;
-  background: currentColor;
-  animation: cursore-rotante 1s steps(1) infinite;
+  margin-left: .06em;
+  vertical-align: -.06em;
+  background: #17506b;
+  opacity: .55;
 }
-@keyframes cursore-rotante { 50% { opacity: 0; } }
-@media (prefers-reduced-motion: reduce) {
-  #ambiti-rotanti.attivo::after { display: none; }
-}
-

@@ -385,39 +385,51 @@
     }
   });
 
-/* ---------- Frase rotante fra "Cosa faccio" e "Progetti" ----------
-   Il markup contiene gia' la lista completa: se questo script non parte
-   resta una frase leggibile, come per i contatori.
-   Con prefers-reduced-motion non si anima nulla: un testo che si
-   riscrive in ciclo e' fra le animazioni piu' problematiche per chi ha
-   disturbi vestibolari o difficolta' di lettura. */
+/* ---------- Digitazione dell'h1 all'atterraggio ----------
+   Una volta sola, all'apertura. L'h1 e' stato tolto di proposito dalla
+   cascata di dissolvenza dell'hero (data-load): sommare dissolvenza e
+   digitazione sullo stesso elemento e' quello che fa sembrare
+   l'effetto di cattivo gusto. Qui la digitazione E' l'entrata, e parte
+   nel turno che spettava all'h1, 120ms.
+   Il testo resta nel markup: senza questo script l'h1 e' completo. */
 (function () {
   'use strict';
-  var rot = document.getElementById('ambiti-rotanti');
-  if (!rot) return;
+  var h = document.getElementById('ruolo-hero');
+  if (!h) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var parole = (rot.getAttribute('data-parole') || '').split('|').filter(Boolean);
-  if (parole.length < 2) return;
 
-  /* la lista intera resta agli screen reader; il testo che cambia
-     di continuo viene tolto dall'albero di accessibilita' */
-  var sr = document.createElement('span');
-  sr.textContent = parole.join(', ');
-  sr.style.cssText = 'position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap';
-  rot.parentNode.insertBefore(sr, rot);
-  rot.setAttribute('aria-hidden', 'true');
-  rot.classList.add('attivo');
-  rot.textContent = '';
+  var span = h.querySelector('span');
+  if (!span) return;
+  var p1 = (h.firstChild && h.firstChild.nodeValue ? h.firstChild.nodeValue : '').trim();
+  var p2 = span.textContent.trim();
+  if (!p1 || !p2) return;
+  var colore2 = span.style.color || '#17506b';
 
-  var idx = 0, pos = 0, cancella = false;
+  /* altezza riservata: svuotando l'h1 il contenuto sotto non deve salire */
+  h.style.minHeight = Math.ceil(h.getBoundingClientRect().height) + 'px';
+  h.setAttribute('aria-label', p1 + ' ' + p2);
+
+  var wrap = document.createElement('span');
+  wrap.setAttribute('aria-hidden', 'true');
+  var s1 = document.createElement('span');
+  var s2 = document.createElement('span');
+  s2.style.color = colore2;
+  wrap.appendChild(s1);
+  wrap.appendChild(document.createElement('br'));
+  wrap.appendChild(s2);
+  h.textContent = '';
+  h.appendChild(wrap);
+  h.classList.add('digita');
+
+  var i = 0, tutto = p1 + '\n' + p2;
   function passo() {
-    var p = parole[idx];
-    pos += cancella ? -1 : 1;
-    rot.textContent = p.slice(0, pos);
-    var attesa = cancella ? 38 : 72;
-    if (!cancella && pos >= p.length) { cancella = true; attesa = 1700; }
-    else if (cancella && pos <= 0) { cancella = false; idx = (idx + 1) % parole.length; attesa = 300; }
-    setTimeout(passo, attesa);
+    i++;
+    var visto = tutto.slice(0, i);
+    var t = visto.indexOf('\n');
+    if (t === -1) { s1.textContent = visto; s2.textContent = ''; }
+    else { s1.textContent = visto.slice(0, t); s2.textContent = visto.slice(t + 1); }
+    if (i < tutto.length) setTimeout(passo, 26);
+    else { h.classList.remove('digita'); h.style.minHeight = ''; }
   }
-  setTimeout(passo, 700);
+  setTimeout(passo, 120);
 })();
