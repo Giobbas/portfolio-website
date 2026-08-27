@@ -1,8 +1,14 @@
+# Sito raggiungibile solo tramite link diretto: fuori dagli indici di ricerca.
+# L'header copre ogni risorsa, PDF del CV compreso, che non puo' contenere
+# un meta tag. robots.txt deve continuare a CONSENTIRE la scansione: se
+# bloccasse i crawler, non leggerebbero mai questa direttiva e l'URL
+# potrebbe comparire lo stesso nei risultati.
+/*
+  X-Robots-Tag: noindex, nofollow
+
 # CSS e JS hanno nomi fissi (nessun hash nel filename): senza questa regola
-# Cloudflare Pages li serve con max-age=14400, quindi per 4 ore il browser
-# usa la copia in cache anche dopo un deploy. Se il markup nuovo dipende da
-# JS nuovo, la pagina si rompe in silenzio. Forziamo la rivalidazione:
-# il browser chiede sempre, e riceve 304 quando il file non e cambiato.
+# Cloudflare Pages li servirebbe con max-age=14400, quindi per 4 ore il
+# browser userebbe la copia in cache anche dopo un deploy.
 
 /css/*
   Cache-Control: public, max-age=0, must-revalidate

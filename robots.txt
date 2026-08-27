@@ -1,4 +1,5 @@
+# Consentiamo la scansione di proposito: i crawler devono poter leggere
+# il meta robots e l'header X-Robots-Tag che chiedono di non indicizzare.
+# Bloccarli qui otterrebbe l'effetto opposto.
 User-agent: *
 Allow: /
-
-Sitemap: https://giovannabasilico.com/sitemap.xml
