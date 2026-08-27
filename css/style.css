@@ -124,3 +124,13 @@ html { scroll-behavior: smooth; }
 @media (max-width: 430px) {
   #header-inner > a[href="#top"] span { display: none; }
 }
+
+/* --- Blocchi a due colonne su schermi molto stretti -------------------
+   Diversi blocchi usano "flex:1 1 460px;min-width:280px". Sotto i 340px
+   il min-width, sommato all'indentazione della timeline, supera il
+   viewport: a 320px il blocco parte da 72px e arriva a 352px. Lasciamo
+   che si restringano liberamente: il flex-basis continua a governare
+   il comportamento su tutte le altre larghezze. */
+@media (max-width: 400px) {
+  [style*="min-width:280px"] { min-width: 0 !important; }
+}
