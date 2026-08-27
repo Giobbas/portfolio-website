@@ -111,3 +111,16 @@ html { scroll-behavior: smooth; }
 .x40:hover{background:rgba(251,250,248,.10);border-color:#fbfaf8}
 .x41:hover{background:rgba(251,250,248,.10);border-color:#fbfaf8}
 .x42:hover{background:#0f3a4e;transform:translateY(-3px)}
+
+/* --- Header su schermi stretti ---------------------------------------
+   Sotto i 1040px compaiono #nav-cv e #nav-toggle accanto al logo.
+   A 375px servono 377px (159 logo + 99 CV + 71 Menu + 48 di gap) contro
+   i 335 disponibili: il pulsante Menu usciva dal viewport e trascinava
+   tutta la pagina in scroll orizzontale. Riduciamo il gap e sotto i
+   430px lasciamo il solo simbolo del logo, che resta cliccabile. */
+@media (max-width: 1040px) {
+  #header-inner { gap: 14px !important; }
+}
+@media (max-width: 430px) {
+  #header-inner > a[href="#top"] span { display: none; }
+}
