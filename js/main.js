@@ -58,6 +58,15 @@
     return { link: a, el: document.querySelector(a.getAttribute('href')) };
   }).filter(function (t) { return t.el; });
 
+  /* Elenco COMPLETO delle sezioni, preso dal pannello "Tutte le sezioni".
+     Serve a sapere sempre dove siamo: la barra conosce solo 4 delle 9
+     sezioni, e senza questo elenco scorrendo le altre 5 restava acceso
+     il posto sbagliato. */
+  var tutteLeSezioni = Array.prototype.slice.call(document.querySelectorAll('#section-index a[href^="#"]'))
+    .map(function (a) { return { href: a.getAttribute('href'), el: document.querySelector(a.getAttribute('href')), link: a }; })
+    .filter(function (t) { return t.el; });
+  var chipsMore = document.getElementById('chips-more');
+
   function spy() {
     if (headerInner) headerInner.style.height = window.scrollY > 40 ? '56px' : '66px';
     if (toTop) {
@@ -65,26 +74,51 @@
       toTop.style.opacity = show ? '1' : '0';
       toTop.style.pointerEvents = show ? 'auto' : 'none';
     }
-    /* Sezione attiva scelta per posizione nel documento, non per ordine
-       nell'array: targets contiene prima i link della barra e poi i chip,
-       che puntano alle stesse sezioni. Con la vecchia logica vinceva
-       sempre l'ultimo dell'array, cioe' un chip, e i link della barra
-       non si evidenziavano mai. */
-    var attivoHref = null, migliore = -Infinity;
-    targets.forEach(function (t) {
-      var top = t.el.getBoundingClientRect().top;
-      if (top - 120 <= 0 && top > migliore) { migliore = top; attivoHref = t.link.getAttribute('href'); }
+    /* Sezione corrente cercata fra TUTTE le sezioni, non solo fra quelle
+       della barra: e' quella piu' in basso che ha superato la soglia. */
+    var correnteHref = null, migliore = -Infinity;
+    var elenco = tutteLeSezioni.length ? tutteLeSezioni : targets.map(function (t) { return { href: t.link.getAttribute('href'), el: t.el }; });
+    elenco.forEach(function (s) {
+      var top = s.el.getBoundingClientRect().top;
+      if (top - 120 <= 0 && top > migliore) { migliore = top; correnteHref = s.href; }
     });
-    /* L'ultima sezione e' piu corta del viewport: la sua cima non arriva
+    /* L'ultima sezione e' piu' corta del viewport: la sua cima non arriva
        mai a 120px dall'alto, quindi da sola non si attiverebbe mai.
        A fondo pagina la attiviamo comunque. */
-    if (targets.length && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+    if (elenco.length && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
       var piuInBasso = -Infinity;
-      targets.forEach(function (t) {
-        var top = t.el.getBoundingClientRect().top + window.scrollY;
-        if (top > piuInBasso) { piuInBasso = top; attivoHref = t.link.getAttribute('href'); }
+      elenco.forEach(function (s) {
+        var top = s.el.getBoundingClientRect().top + window.scrollY;
+        if (top > piuInBasso) { piuInBasso = top; correnteHref = s.href; }
       });
     }
+    /* La barra conosce questa sezione? Se si', si accende la sua voce.
+       Se no, si accende il pulsante "Tutte le sezioni", che fa da
+       indicatore di riserva: cosi' qualcosa e' sempre acceso, ed e'
+       sempre corretto. */
+    var nellaBarra = targets.some(function (t) { return t.link.getAttribute('href') === correnteHref; });
+    var attivoHref = nellaBarra ? correnteHref : null;
+    if (indexToggle) {
+      var fuori = !!correnteHref && !nellaBarra;
+      indexToggle.style.color = fuori ? '#17506b' : '#1b1e24';
+      indexToggle.style.fontWeight = fuori ? '600' : '500';
+      indexToggle.style.borderColor = fuori ? '#17506b' : '#e5e3de';
+    }
+    /* su mobile l'indicatore sono i chip: stesso trattamento a "Tutte le
+       sezioni" della striscia, altrimenti li' il problema resterebbe */
+    if (chipsMore) {
+      var f2 = !!correnteHref && !nellaBarra;
+      chipsMore.style.background = f2 ? '#17506b' : 'transparent';
+      chipsMore.style.color = f2 ? '#fbfaf8' : '#17506b';
+      chipsMore.style.borderColor = f2 ? '#17506b' : '#c6ced3';
+      chipsMore.style.borderStyle = f2 ? 'solid' : 'dashed';
+    }
+    /* e dentro il pannello segniamo comunque la voce corrente */
+    tutteLeSezioni.forEach(function (s) {
+      var on = s.href === correnteHref;
+      s.link.style.color = on ? '#17506b' : '';
+      s.link.style.fontWeight = on ? '600' : '';
+    });
     targets.forEach(function (t) {
       /* confronto per href: cosi barra e chip della stessa sezione si
          accendono insieme, invece di escludersi a vicenda */
