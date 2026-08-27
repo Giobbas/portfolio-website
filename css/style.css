@@ -196,3 +196,18 @@ button[data-cli-move][disabled] {
 @media (prefers-reduced-motion: reduce) {
   #ambiti-rotanti.attivo::after { display: none; }
 }
+
+/* Cursore della digitazione dell'h1: presente solo mentre scrive */
+#ruolo-hero.digita::after {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: .82em;
+  margin-left: 5px;
+  vertical-align: -.06em;
+  background: #17506b;
+  animation: cursore-rotante 1s steps(1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  #ruolo-hero.digita::after { display: none; }
+}
