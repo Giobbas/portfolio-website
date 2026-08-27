@@ -366,3 +366,40 @@
       if (mt) mt.click();
     }
   });
+
+/* ---------- Frase rotante fra "Cosa faccio" e "Progetti" ----------
+   Il markup contiene gia' la lista completa: se questo script non parte
+   resta una frase leggibile, come per i contatori.
+   Con prefers-reduced-motion non si anima nulla: un testo che si
+   riscrive in ciclo e' fra le animazioni piu' problematiche per chi ha
+   disturbi vestibolari o difficolta' di lettura. */
+(function () {
+  'use strict';
+  var rot = document.getElementById('ambiti-rotanti');
+  if (!rot) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var parole = (rot.getAttribute('data-parole') || '').split('|').filter(Boolean);
+  if (parole.length < 2) return;
+
+  /* la lista intera resta agli screen reader; il testo che cambia
+     di continuo viene tolto dall'albero di accessibilita' */
+  var sr = document.createElement('span');
+  sr.textContent = parole.join(', ');
+  sr.style.cssText = 'position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap';
+  rot.parentNode.insertBefore(sr, rot);
+  rot.setAttribute('aria-hidden', 'true');
+  rot.classList.add('attivo');
+  rot.textContent = '';
+
+  var idx = 0, pos = 0, cancella = false;
+  function passo() {
+    var p = parole[idx];
+    pos += cancella ? -1 : 1;
+    rot.textContent = p.slice(0, pos);
+    var attesa = cancella ? 38 : 72;
+    if (!cancella && pos >= p.length) { cancella = true; attesa = 1700; }
+    else if (cancella && pos <= 0) { cancella = false; idx = (idx + 1) % parole.length; attesa = 300; }
+    setTimeout(passo, attesa);
+  }
+  setTimeout(passo, 700);
+})();

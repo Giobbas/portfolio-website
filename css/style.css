@@ -178,3 +178,21 @@ button[data-cli-move][disabled] {
   opacity: .3;
   cursor: default;
 }
+
+/* --- Cursore della frase rotante -------------------------------------
+   La classe .attivo la mette il JavaScript: senza, il markup mostra la
+   lista completa e un cursore lampeggiante in fondo non avrebbe senso. */
+#ambiti-rotanti.attivo::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: .95em;
+  margin-left: 4px;
+  vertical-align: -.1em;
+  background: currentColor;
+  animation: cursore-rotante 1s steps(1) infinite;
+}
+@keyframes cursore-rotante { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  #ambiti-rotanti.attivo::after { display: none; }
+}
