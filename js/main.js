@@ -433,3 +433,54 @@
   }
   setTimeout(passo, 120);
 })();
+
+/* ---------- Digitazione dei titoli di sezione ----------
+   Stessa logica dell'h1, ma innescata quando il titolo entra in vista.
+   I titoli vengono svuotati SUBITO, non al momento dell'incrocio:
+   altrimenti si vedrebbe il titolo intero cancellarsi e riscriversi.
+   E' lo stesso schema che il sito usa gia' per data-reveal.
+   L'inizializzazione aspetta il caricamento dei font, perche' l'altezza
+   riservata va misurata sul carattere definitivo, non sul ripiego. */
+(function () {
+  'use strict';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
+
+  function avvia() {
+    var titoli = Array.prototype.slice.call(document.querySelectorAll('[data-digita]'));
+    if (!titoli.length) return;
+
+    var dati = titoli.map(function (el) {
+      var testo = el.textContent.trim();
+      el.setAttribute('aria-label', testo);
+      el.style.minHeight = Math.ceil(el.getBoundingClientRect().height) + 'px';
+      var inner = document.createElement('span');
+      inner.setAttribute('aria-hidden', 'true');
+      el.textContent = '';
+      el.appendChild(inner);
+      return { el: el, inner: inner, testo: testo };
+    });
+
+    var io = new IntersectionObserver(function (voci) {
+      voci.forEach(function (v) {
+        if (!v.isIntersecting) return;
+        io.unobserve(v.target);
+        var d = dati.filter(function (x) { return x.el === v.target; })[0];
+        if (!d) return;
+        d.el.classList.add('digita');
+        var i = 0;
+        (function passo() {
+          i++;
+          d.inner.textContent = d.testo.slice(0, i);
+          if (i < d.testo.length) { setTimeout(passo, 22); }
+          else { d.el.classList.remove('digita'); d.el.style.minHeight = ''; }
+        })();
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.35 });
+
+    dati.forEach(function (d) { io.observe(d.el); });
+  }
+
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(avvia); }
+  else { avvia(); }
+})();

@@ -185,7 +185,7 @@ button[data-cli-move][disabled] {
    forte di "effetto terminale" ed e' cio' che rende l'animazione di
    cattivo gusto. Qui e' un trattino sottile che accompagna la
    scrittura e sparisce appena finisce. */
-#ruolo-hero.digita::after {
+.digita::after {
   content: "";
   display: inline-block;
   width: .04em;
