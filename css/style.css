@@ -134,3 +134,16 @@ html { scroll-behavior: smooth; }
 @media (max-width: 400px) {
   [style*="min-width:280px"] { min-width: 0 !important; }
 }
+
+/* --- Altezza del menu mobile -----------------------------------------
+   #mobile-nav ha inline max-height:calc(100vh - 66px). Su iOS Safari
+   100vh e' l'altezza del viewport CON LE BARRE NASCOSTE, quindi maggiore
+   dell'area realmente visibile: il menu puo' estendersi sotto la barra
+   del browser e le ultime voci restano irraggiungibili anche arrivando
+   in fondo allo scroll interno.
+   dvh (dynamic viewport height) segue l'area effettivamente visibile.
+   Il blocco @supports lascia il fallback in vh ai browser che non lo
+   conoscono; !important serve perche' il valore originale e' inline. */
+@supports (height: 100dvh) {
+  #mobile-nav { max-height: calc(100dvh - 66px) !important; }
+}
