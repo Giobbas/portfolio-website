@@ -147,3 +147,23 @@ html { scroll-behavior: smooth; }
 @supports (height: 100dvh) {
   #mobile-nav { max-height: calc(100dvh - 66px) !important; }
 }
+
+/* --- Skip link -------------------------------------------------------
+   Senza, chi naviga da tastiera deve attraversare header e menu a ogni
+   caricamento prima di raggiungere il contenuto (WCAG 2.4.1).
+   Resta fuori schermo finche' non riceve il focus. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: #17506b;
+  color: #fbfaf8;
+  padding: 12px 20px;
+  border-radius: 0 0 8px 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+.skip-link:focus { left: 0; }
+/* il target del salto non ha un contorno proprio: lo togliamo */
+#top:focus { outline: none; }

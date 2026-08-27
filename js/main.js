@@ -149,10 +149,14 @@
   var projTabs = Array.prototype.slice.call(document.querySelectorAll('[data-proj-tab]'));
   var projPanels = Array.prototype.slice.call(document.querySelectorAll('[data-proj-panel]'));
   var projIndex = 0;
+  projTabs.forEach(function (t, k) { t.setAttribute('tabindex', k === projIndex ? '0' : '-1'); });
   function selectProject(i) {
     projTabs.forEach(function (t, k) {
       var on = k === i;
       t.setAttribute('aria-selected', on ? 'true' : 'false');
+      /* roving tabindex: nel tab sequence entra solo la tab attiva,
+         alle altre si arriva con le frecce (pattern ARIA per i tablist) */
+      t.setAttribute('tabindex', on ? '0' : '-1');
       t.style.borderColor = on ? '#17506b' : '#e5e3de';
       var img = t.querySelector('img');
       if (img) { img.style.filter = on ? 'none' : 'grayscale(1)'; img.style.opacity = on ? '1' : '.5'; }
