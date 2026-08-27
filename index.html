@@ -26,7 +26,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Giovanna Basilico","jobTitle":"Senior Digital Project Manager | Product Owner","email":"mailto:giobbas88@gmail.com","url":"https://giovannabasilico.com/","image":"assets/images/giovanna-basilico.jpg","address":{"@type":"PostalAddress","addressLocality":"Induno Olona","addressRegion":"VA","addressCountry":"IT"},"sameAs":["https://www.linkedin.com/in/giovanna-basilico"],"worksFor":{"@type":"Organization","name":"Tinext SA"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Università Carlo Cattaneo LIUC"},{"@type":"CollegeOrUniversity","name":"Università Cattolica del Sacro Cuore"}],"knowsAbout":["Digital Project Management","Product Ownership","Requirements analysis","Stakeholder management","CMS migration","Magnolia CMS","SEO","GEO / AI Search","Web analytics"]}
 </script>
-<link rel="stylesheet" href="css/style.css?v=efa3406e">
+<link rel="stylesheet" href="css/style.css?v=318e747c">
 </head>
 <body>
 <div style="min-height:100vh">
@@ -47,6 +47,7 @@
         <a href="https://www.linkedin.com/in/giovanna-basilico" target="_blank" rel="noopener" style="font-size:14px;color:#17506b;font-weight:500;white-space:nowrap">LinkedIn</a>
         <a class="x6" href="assets/Giovanna_Basilico_CV_2026.pdf" download="Giovanna_Basilico_CV_2026.pdf" style="font-size:14px;font-weight:500;white-space:nowrap;color:#fbfaf8;background:#17506b;border-radius:8px;padding:9px 16px">Scarica CV</a>
       </nav>
+      <a id="nav-cv" href="assets/Giovanna_Basilico_CV_2026.pdf" download="Giovanna_Basilico_CV_2026.pdf" style="display:none;align-items:center;font-size:14px;font-weight:500;white-space:nowrap;color:#fbfaf8;background:#17506b;border-radius:8px;padding:0 14px;min-height:44px;margin-left:auto;margin-right:-16px">Scarica CV</a>
       <button id="nav-toggle" type="button" aria-expanded="false" aria-label="Apri il menu" style="display:none;align-items:center;gap:8px;background:none;border:1px solid #e5e3de;border-radius:8px;padding:0 16px;min-height:44px;font:inherit;font-size:14px;color:#1b1e24;cursor:pointer;justify-content:center">Menu</button>
     </div>
       <div id="section-index" hidden style="border-top:1px solid #e5e3de;background:rgba(251,250,248,.98);backdrop-filter:blur(8px)">
@@ -89,22 +90,32 @@
           </a>
         </div>
       </div>
-      <nav id="mobile-nav" hidden style="border-top:1px solid #e5e3de;background:#fbfaf8;padding:14px clamp(20px,5vw,40px) 22px;display:flex;flex-direction:column;gap:2px" aria-label="Navigazione mobile">
-          <a href="#cosa-faccio" style="padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">Cosa faccio</a>
-          <a href="#progetti" style="padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">Progetti</a>
-          <a href="#clienti" style="padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">Clienti</a>
-          <a href="#esperienza" style="padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">Esperienza</a>
-          <a href="#seo-geo" style="padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">SEO/GEO</a>
-          <a href="#competenze" style="padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">Competenze</a>
-          <a href="#formazione" style="padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">Formazione</a>
-          <a href="#oltre" style="padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">Oltre il lavoro</a>
-          <a href="#contatti" style="padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">Contatti</a>
-          <div style="display:flex;flex-direction:column;gap:2px;margin-top:18px;padding-top:14px;border-top:1px solid #dedcd6">
-          <a href="https://www.linkedin.com/in/giovanna-basilico" target="_blank" rel="noopener" style="padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">LinkedIn</a>
-          <a href="mailto:giobbas88@gmail.com" style="padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">Contattami</a>
-            <a href="assets/Giovanna_Basilico_CV_2026.pdf" download="Giovanna_Basilico_CV_2026.pdf" style="margin-top:12px;text-align:center;font-size:15px;font-weight:500;color:#fbfaf8;background:#17506b;border-radius:8px;padding:12px 16px">Scarica il CV</a>
+      <nav id="mobile-nav" hidden style="border-top:1px solid #e5e3de;background:#fbfaf8;padding:14px clamp(20px,5vw,40px) 26px;display:flex;flex-direction:column;gap:2px;max-height:calc(100vh - 66px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain" aria-label="Navigazione mobile">
+          <a href="#progetti" style="display:block;padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">Progetti<span style="display:block;margin-top:2px;font-size:13px;color:#5f656c">Cinque casi, come li ho gestiti</span></a>
+          <a href="#esperienza" style="display:block;padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">Esperienza<span style="display:block;margin-top:2px;font-size:13px;color:#5f656c">Il percorso, in sintesi</span></a>
+          <a href="#competenze" style="display:block;padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">Competenze<span style="display:block;margin-top:2px;font-size:13px;color:#5f656c">Aree di competenza e strumenti</span></a>
+          <a href="#contatti" style="display:block;padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">Contatti<span style="display:block;margin-top:2px;font-size:13px;color:#5f656c">Email, CV, LinkedIn</span></a>
+          <button type="button" id="more-toggle" aria-expanded="false" aria-controls="more-sections" style="display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;margin:14px 0 0;padding:12px 0;background:none;border:none;border-bottom:1px solid #efeee9;font:inherit;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#8d9299;font-weight:600;cursor:pointer">Tutte le sezioni<span aria-hidden="true" style="font-size:11px">▾</span></button>
+          <div id="more-sections" hidden style="display:flex;flex-direction:column;gap:2px">
+          <a href="#cosa-faccio" style="display:block;padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">Cosa faccio<span style="display:block;margin-top:2px;font-size:13px;color:#5f656c">Le quattro aree di lavoro</span></a>
+          <a href="#clienti" style="display:block;padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">Clienti & settori<span style="display:block;margin-top:2px;font-size:13px;color:#5f656c">Aziende seguite in dieci anni</span></a>
+          <a href="#seo-geo" style="display:block;padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">SEO/GEO & AI Search<span style="display:block;margin-top:2px;font-size:13px;color:#5f656c">La practice avviata in Tinext</span></a>
+          <a href="#formazione" style="display:block;padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">Formazione<span style="display:block;margin-top:2px;font-size:13px;color:#5f656c">Studi e lingue</span></a>
+          <a href="#oltre" style="display:block;padding:11px 0;font-size:16px;color:#1b1e24;border-bottom:1px solid #efeee9">Oltre il lavoro<span style="display:block;margin-top:2px;font-size:13px;color:#5f656c">Sport, musica, associazione</span></a>
+</div>
+          <div style="display:flex;flex-direction:column;gap:9px;margin-top:20px;padding-top:18px;border-top:1px solid #dedcd6">
+          <a href="mailto:giobbas88@gmail.com" style="display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:9px;background:#17506b;color:#fbfaf8;font-size:16px;font-weight:600">Contattami</a>
+          <a href="assets/Giovanna_Basilico_CV_2026.pdf" download="Giovanna_Basilico_CV_2026.pdf" style="display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:9px;border:1px solid #17506b;color:#17506b;font-size:16px;font-weight:600">Scarica il CV</a>
+          <a href="https://www.linkedin.com/in/giovanna-basilico" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:9px;border:1px solid #dfe6e9;color:#1b1e24;font-size:16px;font-weight:500">LinkedIn →</a>
           </div>
         </nav>
+    <nav id="section-chips" aria-label="Sezioni principali" style="gap:8px;overflow-x:auto;scrollbar-width:none;align-items:center;border-top:1px solid #efeee9;padding:9px clamp(20px,5vw,40px)">
+        <a href="#progetti" data-chip="1" style="flex:none;padding:7px 13px;border:1px solid #dfe6e9;border-radius:999px;background:#fbfaf8;font-size:13.5px;font-weight:500;color:#1b1e24;white-space:nowrap">Progetti</a>
+        <a href="#esperienza" data-chip="1" style="flex:none;padding:7px 13px;border:1px solid #dfe6e9;border-radius:999px;background:#fbfaf8;font-size:13.5px;font-weight:500;color:#1b1e24;white-space:nowrap">Esperienza</a>
+        <a href="#competenze" data-chip="1" style="flex:none;padding:7px 13px;border:1px solid #dfe6e9;border-radius:999px;background:#fbfaf8;font-size:13.5px;font-weight:500;color:#1b1e24;white-space:nowrap">Competenze</a>
+        <a href="#contatti" data-chip="1" style="flex:none;padding:7px 13px;border:1px solid #dfe6e9;border-radius:999px;background:#fbfaf8;font-size:13.5px;font-weight:500;color:#1b1e24;white-space:nowrap">Contatti</a>
+        <a href="#clienti" id="chips-more" data-chips-more="1" role="button" style="flex:none;padding:7px 13px;border:1px dashed #c6ced3;border-radius:999px;font-size:13.5px;font-weight:600;color:#17506b;white-space:nowrap">Tutte le sezioni</a>
+    </nav>
   </header>
 
   <main id="top">
@@ -126,7 +137,7 @@
           <span aria-hidden="true" style="font-family:'Instrument Serif', Georgia, serif;font-size:clamp(54px,6vw,76px);line-height:.6;color:#17506b;opacity:.28">“</span>
           
           <p style="font-family:'Instrument Serif', Georgia, serif;font-weight:400;font-size:clamp(19px,2.1vw,26px);line-height:1.38;color:#1b1e24;text-wrap:balance">L'impegno cos'è se non cercare di essere degno? Per questa vita è normale voler dare il meglio</p>
-          <footer style="margin-top:14px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#5f656c">Nesli · <cite style="font-style:normal">Parole da dedicarmi</cite></footer>
+  <footer style="margin-top:14px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#5f656c">Nesli · <cite style="font-style:normal">Parole da dedicarmi</cite></footer>
         </blockquote>
       </div>
     </section>
@@ -145,6 +156,7 @@
           <p style="font-family:'Instrument Serif', Georgia, serif;font-weight:600;font-size:clamp(38px,4.8vw,54px);line-height:1;letter-spacing:-.02em;color:#fbfaf8">8–12</p>
           <p style="margin-top:8px;font-size:14px;line-height:1.45;color:#c3d4dc">progetti gestiti in parallelo</p>
         </div>
+        
       
 </div>
     </section>
@@ -196,7 +208,7 @@
           </div>
         </div>
 
-        <div role="tablist" aria-label="Progetti selezionati" style="display:flex;gap:10px;overflow-x:auto;padding:2px 2px 8px;margin-bottom:clamp(20px,2.6vw,32px)">
+        <div role="tablist" aria-label="Progetti selezionati" style="display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding:2px 2px 8px;margin-bottom:clamp(20px,2.6vw,32px)">
           <button class="x20" type="button" role="tab" id="proj-tab-0" aria-controls="proj-panel-0" aria-selected="true" data-proj-tab="0" style="flex:1 1 0;min-width:126px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 12px 14px;border:1px solid #17506b;border-radius:12px;background:#fbfaf8;font:inherit;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:border-color .2s ease, transform .2s ease">
             <span style="height:42px;margin-bottom:5px;display:flex;align-items:center;justify-content:center"><img loading="lazy" decoding="async" src="assets/images/clients/generali.png" width="183" height="148" alt="Assicurazioni Generali" style="max-height:38px;max-width:98px;width:auto;height:auto;display:block;transition:filter .2s ease, opacity .2s ease;pointer-events:none"></span>
             <span style="font-size:12.5px;font-weight:600;line-height:1.3;text-align:center;color:#1b1e24;transition:color .2s ease">Assicurazioni Generali</span>
@@ -224,6 +236,18 @@
           </button>
         </div>
 
+        <div id="proj-nav" style="align-items:center;justify-content:space-between;gap:14px;margin:-8px 0 20px">
+          <button type="button" data-proj-move="-1" aria-label="Progetto precedente" style="flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid #e5e3de;border-radius:50%;background:#fbfaf8;font:inherit;font-size:17px;color:#17506b;cursor:pointer;touch-action:manipulation">←</button>
+          <div style="display:flex;align-items:center;gap:9px">
+            <span data-proj-dot="0" aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#17506b;transition:background .2s ease, transform .2s ease;transform:scale(1.25)"></span>
+            <span data-proj-dot="1" aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#d3d8dc;transition:background .2s ease, transform .2s ease"></span>
+            <span data-proj-dot="2" aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#d3d8dc;transition:background .2s ease, transform .2s ease"></span>
+            <span data-proj-dot="3" aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#d3d8dc;transition:background .2s ease, transform .2s ease"></span>
+            <span data-proj-dot="4" aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#d3d8dc;transition:background .2s ease, transform .2s ease"></span>
+          </div>
+          <button type="button" data-proj-move="1" aria-label="Progetto successivo" style="flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid #e5e3de;border-radius:50%;background:#fbfaf8;font:inherit;font-size:17px;color:#17506b;cursor:pointer;touch-action:manipulation">→</button>
+        </div>
+
         <div style="display:flex;flex-direction:column;gap:clamp(16px,2vw,20px)">
 
           <article class="x25" role="tabpanel" id="proj-panel-0" aria-labelledby="proj-tab-0" data-proj-panel="0" data-reveal="1" data-delay="0" style="border:1px solid #e5e3de;border-radius:12px;background:#fbfaf8;padding:clamp(22px,3vw,36px);transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease">
@@ -242,7 +266,7 @@
             <div style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,48px)">
               <div style="flex:1 1 260px;min-width:240px;display:flex;flex-direction:column;gap:18px">
                 <div>
-                  <p style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:7px">Challenge</p>
+                  <p style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:7px">Sfida</p>
                   <p style="font-size:15px;line-height:1.65;color:#3d434b">Molteplici stakeholder e processi approvativi articolati, tipici di un contesto corporate assicurativo.</p>
                 </div>
                 <div>
@@ -278,7 +302,7 @@
             <div style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,48px)">
               <div style="flex:1 1 260px;min-width:240px;display:flex;flex-direction:column;gap:18px">
                 <div>
-                  <p style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:7px">Challenge</p>
+                  <p style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:7px">Sfida</p>
                   <p style="font-size:15px;line-height:1.65;color:#3d434b">Rifacimento del sito con molti stakeholder coinvolti e identità grafica da ripensare, in parallelo alle attività day-by-day e a richieste evolutive a frequenza molto alta.</p>
                 </div>
                 <div>
@@ -315,7 +339,7 @@
             <div style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,48px)">
               <div style="flex:1 1 260px;min-width:240px;display:flex;flex-direction:column;gap:18px">
                 <div>
-                  <p style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:7px">Challenge</p>
+                  <p style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:7px">Sfida</p>
                   <p style="font-size:15px;line-height:1.65;color:#3d434b">Architettura informativa da ripensare completamente, con un cliente al primo progetto digitale di questa portata.&nbsp;</p>
                 </div>
                 <div>
@@ -351,7 +375,7 @@
             <div style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,48px)">
               <div style="flex:1 1 260px;min-width:240px;display:flex;flex-direction:column;gap:18px">
                 <div>
-                  <p style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:7px">Challenge</p>
+                  <p style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:7px">Sfida</p>
                   <p style="font-size:15px;line-height:1.65;color:#3d434b">Alto numero di integrazioni — tra cui Sanity e Salesforce — un numero elevato di interlocutori da allineare e un team multidisciplinare da coordinare.</p>
                 </div>
                 <div>
@@ -387,7 +411,7 @@
             <div style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,48px)">
               <div style="flex:1 1 260px;min-width:240px;display:flex;flex-direction:column;gap:18px">
                 <div>
-                  <p style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:7px">Challenge</p>
+                  <p style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:7px">Sfida</p>
                   <p style="font-size:15px;line-height:1.65;color:#3d434b">Gestione continuativa di una piattaforma B2B con richieste ricorrenti da prioritizzare e più attori coinvolti.</p>
                 </div>
                 <div>
@@ -411,59 +435,7 @@
       </div>
     </section>
 
-    <section id="clienti" style="scroll-margin-top:86px;padding:clamp(64px,9vw,120px) 0;border-top:1px solid #e5e3de">
-      <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,40px)">
-        <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:clamp(36px,4vw,56px)">
-          <div style="flex:none">
-            <p style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#17506b;font-weight:600">Clienti &amp; settori</p>
-          </div>
-          <div style="flex:none">
-            <h2 style="font-family:'Instrument Serif', Georgia, serif;font-weight:400;font-size:clamp(30px,3.9vw,44px);line-height:1.12;letter-spacing:-.015em;margin-bottom:16px">Principali clienti seguiti in dieci anni di esperienza</h2>
-            <p style="font-size:17px;line-height:1.6;color:#4d535c;max-width:56ch;text-wrap:pretty">Aziende B2B, B2C e corporate, in Svizzera e in Italia, fino a Dubai, dal settore assicurativo al turismo, dal retail all'industria.</p>
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(18px,2.2vw,26px)">
-          <div class="x30" data-reveal="1" data-delay="0" style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(20px,2.4vw,26px);transition:transform .25s ease, border-color .25s ease">
-            <h3 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:12px">Financial Services &amp; Insurance</h3>
-            <p style="font-size:16px;line-height:1.75;color:#3d434b">Assicurazioni Generali · Generali Global Corporate · KFH–TAM</p>
-          </div>
-          <div class="x31" data-reveal="1" data-delay="45" style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(20px,2.4vw,26px);transition:transform .25s ease, border-color .25s ease">
-            <h3 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:12px">Settore pubblico &amp; Turismo</h3>
-            <p style="font-size:16px;line-height:1.75;color:#3d434b">Ascona Locarno · Città di Mendrisio · AIL · AIM</p>
-          </div>
-          <div class="x32" data-reveal="1" data-delay="90" style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(20px,2.4vw,26px);transition:transform .25s ease, border-color .25s ease">
-            <h3 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:12px">Beni di consumo &amp; Retail</h3>
-            <p style="font-size:16px;line-height:1.75;color:#3d434b">McDonald's Italia · Loacker · Moleskine B2B · Coop Alleanza 3.0 · Ferrero · Maghetti</p>
-          </div>
-          <div class="x33" data-reveal="1" data-delay="135" style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(20px,2.4vw,26px);transition:transform .25s ease, border-color .25s ease">
-            <h3 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:12px">Industria &amp; Manifattura</h3>
-            <p style="font-size:16px;line-height:1.75;color:#3d434b">Lamberti · De Nora · Etex Group · Evoca</p>
-          </div>
-          <div class="x34" data-reveal="1" data-delay="180" style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(20px,2.4vw,26px);transition:transform .25s ease, border-color .25s ease">
-            <h3 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:12px">Ciclismo &amp; Sporting goods</h3>
-            <p style="font-size:16px;line-height:1.75;color:#3d434b">Full Speed Ahead · Vision ·&nbsp;Dotout</p>
-          </div>
-          <div class="x35" data-reveal="1" data-delay="225" style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(20px,2.4vw,26px);transition:transform .25s ease, border-color .25s ease">
-            <h3 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:12px">Telco &amp; Media</h3>
-            <p style="font-size:16px;line-height:1.75;color:#3d434b">EOLO · E-One</p>
-          </div>
-          <div class="x36" data-reveal="1" data-delay="270" style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(20px,2.4vw,26px);transition:transform .25s ease, border-color .25s ease">
-            <h3 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:12px">Healthcare</h3>
-            <p style="font-size:16px;line-height:1.75;color:#3d434b">Medacta</p>
-          </div>
-                    <div class="x37" data-reveal="1" data-delay="315" style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(20px,2.4vw,26px);transition:transform .25s ease, border-color .25s ease">
-            <h3 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:12px">HR &amp; Servizi</h3>
-            <p style="font-size:16px;line-height:1.75;color:#3d434b">Openjobmetis · Meritocracy · Seltis · Corium</p>
-          </div>
-          <div class="x38" data-reveal="1" data-delay="360" style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(20px,2.4vw,26px);transition:transform .25s ease, border-color .25s ease">
-            <h3 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:12px">Design &amp; arredo</h3>
-            <p style="font-size:16px;line-height:1.75;color:#3d434b">RODA · IKEA</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="esperienza" style="scroll-margin-top:86px;padding:clamp(64px,9vw,120px) 0;border-top:1px solid #e5e3de;background:#f1f4f5">
+    <section id="esperienza" style="scroll-margin-top:86px;padding:clamp(64px,9vw,120px) 0;border-top:1px solid #e5e3de">
       <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,40px)">
         <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:clamp(36px,4vw,56px)">
           <div style="flex:none">
@@ -554,6 +526,73 @@
       </div>
     </section>
 
+    <section id="clienti" style="scroll-margin-top:86px;padding:clamp(64px,9vw,120px) 0;border-top:1px solid #e5e3de;background:#f1f4f5">
+      <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,40px)">
+        <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:clamp(36px,4vw,56px)">
+          <div style="flex:none">
+            <p style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#17506b;font-weight:600">Clienti &amp; settori</p>
+          </div>
+          <div style="flex:none">
+            <h2 style="font-family:'Instrument Serif', Georgia, serif;font-weight:400;font-size:clamp(30px,3.9vw,44px);line-height:1.12;letter-spacing:-.015em;margin-bottom:16px">Principali clienti seguiti in dieci anni di esperienza</h2>
+            <p style="font-size:17px;line-height:1.6;color:#4d535c;max-width:56ch;text-wrap:pretty">Aziende B2B, B2C e corporate, in Svizzera e in Italia, fino a Dubai, dal settore assicurativo al turismo, dal retail all'industria.</p>
+          </div>
+        </div>
+        <div id="clienti-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(18px,2.2vw,26px)">
+          <div class="x30" style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(20px,2.4vw,26px);transition:transform .25s ease, border-color .25s ease">
+            <h3 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:12px">Financial Services &amp; Insurance</h3>
+            <p style="font-size:16px;line-height:1.75;color:#3d434b">Assicurazioni Generali · Generali Global Corporate · KFH–TAM</p>
+          </div>
+          <div class="x31" style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(20px,2.4vw,26px);transition:transform .25s ease, border-color .25s ease">
+            <h3 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:12px">Settore pubblico &amp; Turismo</h3>
+            <p style="font-size:16px;line-height:1.75;color:#3d434b">Ascona Locarno · Città di Mendrisio · AIL · AIM</p>
+          </div>
+          <div class="x32" style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(20px,2.4vw,26px);transition:transform .25s ease, border-color .25s ease">
+            <h3 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:12px">Beni di consumo &amp; Retail</h3>
+            <p style="font-size:16px;line-height:1.75;color:#3d434b">McDonald's Italia · Loacker · Moleskine B2B · Coop Alleanza 3.0 · Ferrero · Maghetti</p>
+          </div>
+          <div class="x33" style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(20px,2.4vw,26px);transition:transform .25s ease, border-color .25s ease">
+            <h3 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:12px">Industria &amp; Manifattura</h3>
+            <p style="font-size:16px;line-height:1.75;color:#3d434b">Lamberti · De Nora · Etex Group · Evoca</p>
+          </div>
+          <div class="x34" style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(20px,2.4vw,26px);transition:transform .25s ease, border-color .25s ease">
+            <h3 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:12px">Ciclismo &amp; Sporting goods</h3>
+            <p style="font-size:16px;line-height:1.75;color:#3d434b">Full Speed Ahead · Vision ·&nbsp;Dotout</p>
+          </div>
+          <div class="x35" style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(20px,2.4vw,26px);transition:transform .25s ease, border-color .25s ease">
+            <h3 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:12px">Telco &amp; Media</h3>
+            <p style="font-size:16px;line-height:1.75;color:#3d434b">EOLO · E-One</p>
+          </div>
+          <div class="x36" style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(20px,2.4vw,26px);transition:transform .25s ease, border-color .25s ease">
+            <h3 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:12px">Healthcare</h3>
+            <p style="font-size:16px;line-height:1.75;color:#3d434b">Medacta</p>
+          </div>
+                    <div class="x37" style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(20px,2.4vw,26px);transition:transform .25s ease, border-color .25s ease">
+            <h3 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:12px">HR &amp; Servizi</h3>
+            <p style="font-size:16px;line-height:1.75;color:#3d434b">Openjobmetis · Meritocracy · Seltis · Corium</p>
+          </div>
+          <div class="x38" style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(20px,2.4vw,26px);transition:transform .25s ease, border-color .25s ease">
+            <h3 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:12px">Design &amp; arredo</h3>
+            <p style="font-size:16px;line-height:1.75;color:#3d434b">RODA · IKEA</p>
+          </div>
+        </div>
+        <div id="clienti-nav" style="align-items:center;justify-content:space-between;gap:14px;margin-top:18px">
+          <button type="button" data-cli-move="-1" aria-label="Settori precedenti" style="flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid #dfe6e9;border-radius:50%;background:#fbfaf8;font:inherit;font-size:17px;color:#17506b;cursor:pointer;touch-action:manipulation">←</button>
+          <div style="display:flex;align-items:center;gap:7px">
+            <span data-cli-dot="0" aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:#17506b;transition:background .2s ease, transform .2s ease;transform:scale(1.3)"></span>
+            <span data-cli-dot="1" aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:#d3d8dc;transition:background .2s ease, transform .2s ease;"></span>
+            <span data-cli-dot="2" aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:#d3d8dc;transition:background .2s ease, transform .2s ease;"></span>
+            <span data-cli-dot="3" aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:#d3d8dc;transition:background .2s ease, transform .2s ease;"></span>
+            <span data-cli-dot="4" aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:#d3d8dc;transition:background .2s ease, transform .2s ease;"></span>
+            <span data-cli-dot="5" aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:#d3d8dc;transition:background .2s ease, transform .2s ease;"></span>
+            <span data-cli-dot="6" aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:#d3d8dc;transition:background .2s ease, transform .2s ease;"></span>
+            <span data-cli-dot="7" aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:#d3d8dc;transition:background .2s ease, transform .2s ease;"></span>
+            <span data-cli-dot="8" aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:#d3d8dc;transition:background .2s ease, transform .2s ease;"></span>
+          </div>
+          <button type="button" data-cli-move="1" aria-label="Settori successivi" style="flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid #dfe6e9;border-radius:50%;background:#fbfaf8;font:inherit;font-size:17px;color:#17506b;cursor:pointer;touch-action:manipulation">→</button>
+        </div>
+      </div>
+    </section>
+
     <section id="competenze" style="scroll-margin-top:86px;padding:clamp(64px,9vw,120px) 0;border-top:1px solid #e5e3de">
       <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,40px)">
         <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:clamp(36px,4vw,56px)">
@@ -568,44 +607,16 @@
         <h3 style="font-size:19px;font-weight:600;letter-spacing:-.01em;margin-bottom:18px">Aree di competenza</h3>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(16px,2vw,22px);margin-bottom:clamp(40px,5vw,64px)">
           <div style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(22px,2.5vw,30px)">
-            <h4 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:16px">Project Management</h4>
-            <ul style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px 20px">
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Perimetro, pianificazione e milestone</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Raccolta requisiti</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Stime, budget e marginalità</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Change request management</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Allocazione risorse e coordinamento team</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Stakeholder management</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Presales e offerte</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Gestione di criticità e rischi</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>QA/UAT e gestione delle release</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Agile, Kanban e gestione Sprint</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Gantt e documentazione di progetto</li>
-            </ul>
+            <h4 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:14px">Project Management</h4>
+            <p style="font-size:16px;line-height:1.8;color:#3d434b">Perimetro, pianificazione e milestone · Raccolta requisiti · Stime, budget e marginalità · Change request management · Allocazione risorse e coordinamento team · Stakeholder management · Presales e offerte · Gestione di criticità e rischi · QA/UAT e release · Agile, Kanban e gestione Sprint · Gantt e documentazione</p>
           </div>
           <div style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(22px,2.5vw,30px)">
-            <h4 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:16px">Product Management</h4>
-            <ul style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px 20px">
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Product Ownership</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Workshop e raccolta requisiti</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Analisi funzionale e user needs</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Ticket e criteri di accettazione</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Backlog e prioritizzazione</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Roadmap evolutive</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Stakeholder management</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>QA/UAT e collaudo funzionale</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Miglioramento continuo post go-live</li>
-            </ul>
+            <h4 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:14px">Product Management</h4>
+            <p style="font-size:16px;line-height:1.8;color:#3d434b">Product Ownership · Workshop e raccolta requisiti · Analisi funzionale e user needs · Ticket e criteri di accettazione · Backlog e prioritizzazione · Roadmap evolutive · Collaudo funzionale · Miglioramento continuo post go-live</p>
           </div>
           <div style="border:1px solid #e5e3de;border-radius:12px;background:#fff;padding:clamp(22px,2.5vw,30px)">
-            <h4 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:16px">SEO, GEO &amp; Analytics</h4>
-            <ul style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px 20px">
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>SEO strategy &amp; audit</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>GEO / AI &amp; LLM visibility</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Keyword e prompt strategy</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Definizione dei KPI</li>
-              <li style="position:relative;padding-left:15px;font-size:15px;line-height:1.5;color:#3d434b"><span aria-hidden="true" style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#17506b"></span>Reporting e analytics</li>
-            </ul>
+            <h4 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:14px">SEO, GEO &amp; Analytics</h4>
+            <p style="font-size:16px;line-height:1.8;color:#3d434b">SEO strategy &amp; audit · GEO / AI &amp; LLM visibility · Keyword e prompt strategy · Definizione dei KPI · Reporting e analytics</p>
           </div>
         </div>
 
@@ -629,15 +640,21 @@
           </div>
         </div>
       </div>
-    </section></main></div>
+    </section>
       
 
 
     <section id="seo-geo" style="scroll-margin-top:86px;padding:clamp(64px,9vw,120px) 0;border-top:1px solid #e5e3de;background:#f1f4f5">
       <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,40px)">
-        <p style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#17506b;font-weight:600;margin-bottom:16px">SEO/GEO &amp; AI Search</p>
-        <h2 style="font-family:'Instrument Serif', Georgia, serif;font-weight:400;font-size:clamp(23px,3.05vw,39px);line-height:1.12;letter-spacing:-.015em;margin-bottom:16px;white-space:nowrap">Ho avviato la practice SEO e GEO di Tinext</h2>
-        <p style="font-family:'Source Serif 4', Georgia, serif;font-size:clamp(18px,2vw,22px);line-height:1.45;color:#17506b;max-width:60ch;margin-bottom:clamp(26px,3vw,36px);text-wrap:pretty">Oltre alla competenza specialistica, è la prova della capacità di costruire e far crescere un'offerta digitale.</p>
+        <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:clamp(26px,3vw,36px)">
+          <div style="flex:none">
+            <p style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#17506b;font-weight:600">SEO/GEO &amp; AI Search</p>
+          </div>
+          <div style="flex:none">
+            <h2 style="font-family:'Instrument Serif', Georgia, serif;font-weight:400;font-size:clamp(30px,3.9vw,44px);line-height:1.12;letter-spacing:-.015em;margin-bottom:16px">Ho avviato la practice SEO e GEO di Tinext</h2>
+            <p style="font-size:15.5px;line-height:1.6;color:#4d535c;max-width:60ch;text-wrap:pretty">Oltre alla competenza specialistica, è la prova della capacità di costruire e far crescere un'offerta digitale.</p>
+          </div>
+        </div>
         <div style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,72px)">
         <div style="flex:1 1 440px;min-width:280px">
           <p style="font-size:17px;line-height:1.65;color:#4d535c;max-width:52ch;margin-bottom:16px;text-wrap:pretty">In Tinext ho avviato la practice SEO/GEO aziendale: metodologia, offerta e deliverable, presales e delivery. Oggi conta 4 persone, di cui 3 coordinate direttamente.</p>
@@ -814,6 +831,8 @@
 
   
 
+  </main>
+
   <footer style="background:#103b4e;color:#a9bdc7;border-top:1px solid rgba(251,250,248,.14)">
     <div style="max-width:1120px;margin:0 auto;padding:26px clamp(20px,5vw,40px);display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center">
       <p style="display:inline-flex;align-items:center;gap:10px;font-size:14px"><img src="assets/images/jb-logo.png" width="96" height="96" alt="Monogramma JB" style="width:24px;height:24px;display:block;filter:invert(1);opacity:.85"> © Giovanna Basilico</p>
@@ -821,6 +840,6 @@
   </footer>
 
   <a class="x42" href="#top" id="to-top" aria-label="Torna su" style="position:fixed;right:clamp(16px,3vw,28px);bottom:clamp(16px,3vw,28px);z-index:60;width:46px;height:46px;border-radius:50%;background:#17506b;color:#fbfaf8;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 8px 22px rgba(16,59,78,.22);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease"><i class="fa-solid fa-arrow-up"></i></a>
-<script src="js/main.js?v=25062227" defer></script>
+<script src="js/main.js?v=b556dd87" defer></script>
 </body>
 </html>

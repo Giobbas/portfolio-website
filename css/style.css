@@ -35,6 +35,24 @@ html { scroll-behavior: smooth; }
   @media (max-width: 1040px) {
     #nav-links { display:none !important; }
     #nav-toggle { display:inline-flex !important; }
+    #nav-cv { display:inline-flex !important; }
+    #proj-nav { display:flex !important; }
+    #section-chips { display:flex !important; }
+    #clienti-nav { display:flex !important; }
+    #clienti-grid {
+      display:flex !important;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      scrollbar-width:none;
+      gap:14px;
+      padding-bottom:6px;
+      margin-right:calc(-1 * clamp(20px,5vw,40px));
+      padding-right:clamp(20px,5vw,40px);
+    }
+    #clienti-grid > div {
+      flex:0 0 82%;
+      scroll-snap-align:start;
+    }
   }
   @media (max-width: 900px), (hover: none) {
     [data-parallax] { transform: none !important; }
@@ -43,6 +61,12 @@ html { scroll-behavior: smooth; }
     html { scroll-behavior: auto; }
   }
 [hidden] { display: none !important; }
+#proj-nav { display: none; }
+#section-chips { display: none; }
+#section-chips::-webkit-scrollbar { display: none; }
+[role="tablist"]::-webkit-scrollbar { display: none; }
+#clienti-grid::-webkit-scrollbar { display: none; }
+#clienti-nav { display: none; }
 
 /* stati hover e pseudo-elementi estratti dal markup */
 .x1:hover{color:#17506b}

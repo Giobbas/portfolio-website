@@ -28,7 +28,7 @@
 
   if (navToggle) {
     navToggle.addEventListener('click', function () {
-      togglePanel(mobileNav, navToggle, 'Chiudi', 'Menu');
+      togglePanel(mobileNav, navToggle, '\u2715', 'Menu');
     });
   }
   if (indexToggle) {
@@ -53,7 +53,7 @@
   /* ---------- Voce di menu attiva, header compatto, torna su ---------- */
   var headerInner = document.getElementById('header-inner');
   var toTop = document.getElementById('to-top');
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll('#nav-links a[href^="#"]'));
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('#nav-links a[href^="#"], #section-chips a[data-chip]'));
   var targets = navLinks.map(function (a) {
     return { link: a, el: document.querySelector(a.getAttribute('href')) };
   }).filter(function (t) { return t.el; });
@@ -71,6 +71,17 @@
     });
     targets.forEach(function (t) {
       var on = t.link === active;
+      if (t.link.hasAttribute('data-chip')) {
+        t.link.style.background = on ? '#17506b' : '#fbfaf8';
+        t.link.style.borderColor = on ? '#17506b' : '#dfe6e9';
+        t.link.style.color = on ? '#fbfaf8' : '#1b1e24';
+        t.link.style.fontWeight = on ? '600' : '500';
+        if (on) {
+          var strip = t.link.parentElement;
+          if (strip.scrollWidth > strip.clientWidth + 4) strip.scrollTo({ left: t.link.offsetLeft - 20, behavior: 'smooth' });
+        }
+        return;
+      }
       t.link.style.color = on ? '#17506b' : '#1b1e24';
       t.link.style.fontWeight = on ? '600' : '500';
       t.link.style.borderBottomColor = on ? '#17506b' : 'transparent';
@@ -137,6 +148,7 @@
   /* ---------- Selettore dei progetti (loghi cliente) ---------- */
   var projTabs = Array.prototype.slice.call(document.querySelectorAll('[data-proj-tab]'));
   var projPanels = Array.prototype.slice.call(document.querySelectorAll('[data-proj-panel]'));
+  var projIndex = 0;
   function selectProject(i) {
     projTabs.forEach(function (t, k) {
       var on = k === i;
@@ -151,17 +163,36 @@
       if (k === i) { p.removeAttribute('hidden'); p.style.display = ''; p.style.opacity = '1'; p.style.transform = 'none'; }
       else { p.setAttribute('hidden', ''); p.style.display = 'none'; }
     });
-  }
-  projTabs.forEach(function (t, i) {
-    t.addEventListener('click', function () { selectProject(i); });
-    t.addEventListener('keydown', function (e) {
-      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
-      if (!d) return;
-      e.preventDefault();
-      var n = (i + d + projTabs.length) % projTabs.length;
-      selectProject(n);
-      projTabs[n].focus();
+    document.querySelectorAll('[data-proj-dot]').forEach(function (d, k) {
+      d.style.background = k === i ? '#17506b' : '#d3d8dc';
+      d.style.transform = k === i ? 'scale(1.25)' : 'none';
     });
+    var strip = projTabs[0] && projTabs[0].parentElement;
+    if (strip && strip.scrollWidth > strip.clientWidth + 4) {
+      var t = projTabs[i];
+      strip.scrollTo({ left: t.offsetLeft - (strip.clientWidth - t.offsetWidth) / 2, behavior: 'smooth' });
+    }
+    projIndex = i;
+  }
+  /* delegazione sul documento: nessun listener perso, tap affidabile su iOS */
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest) return;
+    var t = e.target.closest('[data-proj-tab]');
+    if (t) { selectProject(projTabs.indexOf(t)); return; }
+    var m = e.target.closest('[data-proj-move]');
+    if (!m) return;
+    var n = projTabs.length;
+    selectProject((((projIndex + Number(m.getAttribute('data-proj-move'))) % n) + n) % n);
+  });
+  document.addEventListener('keydown', function (e) {
+    var t = e.target.closest && e.target.closest('[data-proj-tab]');
+    if (!t) return;
+    var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (!d) return;
+    e.preventDefault();
+    var n = (projTabs.indexOf(t) + d + projTabs.length) % projTabs.length;
+    selectProject(n);
+    projTabs[n].focus();
   });
 
   /* ---------- Contatori dei numeri chiave ---------- */
@@ -170,6 +201,7 @@
     var run = function (el) {
       var target = parseInt(el.getAttribute('data-count'), 10);
       var suffix = el.getAttribute('data-suffix') || '';
+      var prefix = el.getAttribute('data-prefix') || '';
       var dur = 900;
       var t0 = performance.now();
       var tick = function (now) {
@@ -259,3 +291,53 @@
     card.addEventListener('focusout', leave);
   });
 })();
+
+  /* Accordion "Tutte le sezioni" nel menu mobile */
+  var moreToggle = document.getElementById('more-toggle');
+  var moreBox = document.getElementById('more-sections');
+  if (moreToggle && moreBox) {
+    moreToggle.addEventListener('click', function () {
+      var open = moreBox.hasAttribute('hidden');
+      if (open) { moreBox.removeAttribute('hidden'); } else { moreBox.setAttribute('hidden', ''); }
+      moreToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      moreToggle.querySelector('span').textContent = open ? '\u25b4' : '\u25be';
+    });
+  }
+
+  /* Carosello dei settori su mobile: frecce e pallini */
+  var cliGrid = document.getElementById('clienti-grid');
+  if (cliGrid) {
+    var cliCards = function () { return Array.prototype.slice.call(cliGrid.children); };
+    var syncCliDots = function () {
+      var cs = cliCards();
+      if (!cs.length) return;
+      var i = Math.round(cliGrid.scrollLeft / (cs[0].offsetWidth + 14));
+      document.querySelectorAll('[data-cli-dot]').forEach(function (d, k) {
+        d.style.background = k === i ? '#17506b' : '#d3d8dc';
+        d.style.transform = k === i ? 'scale(1.3)' : 'none';
+      });
+    };
+    cliGrid.addEventListener('scroll', syncCliDots, { passive: true });
+    document.addEventListener('click', function (e) {
+      var m = e.target.closest && e.target.closest('[data-cli-move]');
+      if (!m) return;
+      var cs = cliCards();
+      if (!cs.length) return;
+      cliGrid.scrollBy({ left: Number(m.getAttribute('data-cli-move')) * (cs[0].offsetWidth + 14), behavior: 'smooth' });
+    });
+  }
+
+  /* Etichetta "Tutte le sezioni" nella barra mobile: apre il menu al secondo livello */
+  document.addEventListener('click', function (e) {
+    var m = e.target.closest && e.target.closest('[data-chips-more]');
+    if (!m) return;
+    e.preventDefault();
+    var nav = document.getElementById('mobile-nav');
+    var more = document.getElementById('more-sections');
+    var toggle = document.getElementById('nav-toggle');
+    if (nav && nav.hasAttribute('hidden') && toggle) toggle.click();
+    if (more && more.hasAttribute('hidden')) {
+      var mt = document.getElementById('more-toggle');
+      if (mt) mt.click();
+    }
+  });
