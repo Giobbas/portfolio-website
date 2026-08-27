@@ -65,12 +65,30 @@
       toTop.style.opacity = show ? '1' : '0';
       toTop.style.pointerEvents = show ? 'auto' : 'none';
     }
-    var active = null;
+    /* Sezione attiva scelta per posizione nel documento, non per ordine
+       nell'array: targets contiene prima i link della barra e poi i chip,
+       che puntano alle stesse sezioni. Con la vecchia logica vinceva
+       sempre l'ultimo dell'array, cioe' un chip, e i link della barra
+       non si evidenziavano mai. */
+    var attivoHref = null, migliore = -Infinity;
     targets.forEach(function (t) {
-      if (t.el.getBoundingClientRect().top - 120 <= 0) active = t.link;
+      var top = t.el.getBoundingClientRect().top;
+      if (top - 120 <= 0 && top > migliore) { migliore = top; attivoHref = t.link.getAttribute('href'); }
     });
+    /* L'ultima sezione e' piu corta del viewport: la sua cima non arriva
+       mai a 120px dall'alto, quindi da sola non si attiverebbe mai.
+       A fondo pagina la attiviamo comunque. */
+    if (targets.length && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+      var piuInBasso = -Infinity;
+      targets.forEach(function (t) {
+        var top = t.el.getBoundingClientRect().top + window.scrollY;
+        if (top > piuInBasso) { piuInBasso = top; attivoHref = t.link.getAttribute('href'); }
+      });
+    }
     targets.forEach(function (t) {
-      var on = t.link === active;
+      /* confronto per href: cosi barra e chip della stessa sezione si
+         accendono insieme, invece di escludersi a vicenda */
+      var on = t.link.getAttribute('href') === attivoHref;
       if (t.link.hasAttribute('data-chip')) {
         t.link.style.background = on ? '#17506b' : '#fbfaf8';
         t.link.style.borderColor = on ? '#17506b' : '#dfe6e9';
