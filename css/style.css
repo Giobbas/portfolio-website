@@ -195,3 +195,14 @@ button[data-cli-move][disabled] {
   background: #185c68;
   opacity: .55;
 }
+
+/* --- Striscia dei chip: centrata quando c'e' spazio ------------------
+   Con tre voci invece di cinque i chip non riempiono piu' la larghezza
+   e restavano allineati a sinistra: a 768px avanzavano 363px.
+   "safe" e' necessario: sotto i 340px i chip sforano, e un center
+   secco renderebbe il primo irraggiungibile dentro un contenitore che
+   scorre. Con safe, in overflow si torna ad allineare a sinistra.
+   I browser che non conoscono safe ignorano la riga e restano com'erano. */
+@media (max-width: 1040px) {
+  #section-chips { justify-content: safe center; }
+}
