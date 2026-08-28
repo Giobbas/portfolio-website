@@ -480,6 +480,8 @@
   var nav = document.getElementById('mobile-nav');
   var toTop = document.getElementById('to-top');
   var chips = document.getElementById('section-chips');
+  var scrollSalvato = 0;
+  var bloccato = false;
   if (!scrim || !nav) return;
 
   function sincronizza() {
@@ -494,10 +496,36 @@
       /* i chip sono mostrati da una regola con !important: per coprirla
          serve impostare la proprieta' con la stessa priorita' */
       if (chips) chips.style.setProperty('display', 'none', 'important');
+      /* Blocco dello scorrimento col corpo in posizione fissa: su iOS
+         overflow:hidden da solo non ferma la pagina. Salviamo la
+         posizione e la compensiamo con top negativo, cosi' non salta. */
+      if (!bloccato) {
+        scrollSalvato = window.scrollY;
+        document.body.style.position = 'fixed';
+        document.body.style.top = -scrollSalvato + 'px';
+        document.body.style.left = '0';
+        document.body.style.right = '0';
+        document.body.style.width = '100%';
+        bloccato = true;
+      }
     } else {
       scrim.classList.remove('visibile');
       if (toTop) toTop.style.visibility = '';
       if (chips) chips.style.removeProperty('display');
+      if (bloccato) {
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        document.body.style.width = '';
+        bloccato = false;
+        /* ripristino senza animazione: se il menu si e' chiuso cliccando
+           una voce, subito dopo il browser salta all'ancora e vince lui */
+        var c = document.documentElement.style.scrollBehavior;
+        document.documentElement.style.scrollBehavior = 'auto';
+        window.scrollTo(0, scrollSalvato);
+        document.documentElement.style.scrollBehavior = c;
+      }
       var chiudi = function () { if (!scrim.classList.contains('visibile')) scrim.setAttribute('hidden', ''); };
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) chiudi();
       else setTimeout(chiudi, 240);

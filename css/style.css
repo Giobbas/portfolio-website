@@ -230,9 +230,9 @@ button[data-cli-move][disabled] {
   position: fixed;
   inset: 0;
   z-index: 45;
-  background: rgba(15, 66, 73, .42);
-  -webkit-backdrop-filter: blur(3px);
-  backdrop-filter: blur(3px);
+  background: rgba(15, 66, 73, .26);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
   opacity: 0;
   transition: opacity .22s ease;
 }
