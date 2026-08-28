@@ -52,7 +52,6 @@
   /* ---------- Voce di menu attiva, header compatto, torna su ---------- */
   var headerInner = document.getElementById('header-inner');
   var toTop = document.getElementById('to-top');
-  var chips = document.getElementById('section-chips');
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('#nav-links a[href^="#"], #section-chips a[data-chip]'));
   var targets = navLinks.map(function (a) {
     return { link: a, el: document.querySelector(a.getAttribute('href')) };
@@ -480,6 +479,7 @@
   var scrim = document.getElementById('menu-scrim');
   var nav = document.getElementById('mobile-nav');
   var toTop = document.getElementById('to-top');
+  var chips = document.getElementById('section-chips');
   if (!scrim || !nav) return;
 
   function sincronizza() {
