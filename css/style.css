@@ -206,3 +206,17 @@ button[data-cli-move][disabled] {
 @media (max-width: 1040px) {
   #section-chips { justify-content: safe center; }
 }
+
+/* --- Icona del menu mobile -------------------------------------------
+   Due tracciati nello stesso pulsante, scambiati da aria-expanded: cosi'
+   lo stato lo detta l'attributo che gli screen reader gia' leggono,
+   invece di una classe parallela. */
+#nav-toggle [data-icona="aperto"] { display: none; }
+#nav-toggle[aria-expanded="true"] [data-icona="chiuso"] { display: none; }
+#nav-toggle[aria-expanded="true"] [data-icona="aperto"] { display: block; }
+
+/* La freccina di "Tutte le sezioni" ruota quando il pannello e' aperto:
+   senza, non c'era nessun segnale visivo che fosse aperto ne' come
+   richiuderlo. Lo stato lo detta aria-expanded, gia' presente. */
+#index-toggle span { transition: transform .2s ease; }
+#index-toggle[aria-expanded="true"] span { transform: rotate(180deg); }

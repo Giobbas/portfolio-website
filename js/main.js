@@ -28,7 +28,7 @@
 
   if (navToggle) {
     navToggle.addEventListener('click', function () {
-      togglePanel(mobileNav, navToggle, '\u2715', 'Menu');
+      togglePanel(mobileNav, navToggle);
     });
   }
   if (indexToggle) {
@@ -43,7 +43,6 @@
         panel.setAttribute('hidden', '');
         if (panel === mobileNav && navToggle) {
           navToggle.setAttribute('aria-expanded', 'false');
-          navToggle.textContent = 'Menu';
         }
         if (panel === sectionIndex && indexToggle) indexToggle.setAttribute('aria-expanded', 'false');
       }
@@ -449,4 +448,22 @@
 
   if (document.fonts && document.fonts.ready) { document.fonts.ready.then(avvia); }
   else { avvia(); }
+})();
+
+/* ---------- "Torna su" e logo: fino in cima davvero ----------
+   Puntavano a #top, cioe' al <main>, che nel flusso comincia dopo
+   l'header sticky: il browser si fermava a 66px e l'header copriva
+   la testa della foto. Qui portiamo a zero. L'href resta come
+   ripiego se questo script non parte. */
+(function () {
+  'use strict';
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="#top"]');
+    if (!a) return;
+    e.preventDefault();
+    var dolce = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: dolce ? 'smooth' : 'auto' });
+    var main = document.getElementById('top');
+    if (main) main.focus({ preventScroll: true });
+  });
 })();
