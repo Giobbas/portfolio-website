@@ -65,7 +65,14 @@
   var tutteLeSezioni = Array.prototype.slice.call(document.querySelectorAll('#section-index a[href^="#"]'))
     .map(function (a) { return { href: a.getAttribute('href'), el: document.querySelector(a.getAttribute('href')), link: a }; })
     .filter(function (t) { return t.el; });
-  var chipsMore = document.getElementById('chips-more');
+  /* Ogni gruppo del pannello e' una macrovoce; la prima sezione del gruppo
+     e' quella a cui punta la voce nella barra. */
+  var mappaMacro = {};
+  Array.prototype.slice.call(document.querySelectorAll('#section-index a[href^="#"]')).forEach(function (a) {
+    var gruppo = a.parentElement;
+    var primi = gruppo.querySelector('a[href^="#"]');
+    if (primi) mappaMacro[a.getAttribute('href')] = primi.getAttribute('href');
+  });
 
   function spy() {
     if (headerInner) headerInner.style.height = window.scrollY > 40 ? '56px' : '66px';
@@ -92,27 +99,12 @@
         if (top > piuInBasso) { piuInBasso = top; correnteHref = s.href; }
       });
     }
-    /* La barra conosce questa sezione? Se si', si accende la sua voce.
-       Se no, si accende il pulsante "Tutte le sezioni", che fa da
-       indicatore di riserva: cosi' qualcosa e' sempre acceso, ed e'
-       sempre corretto. */
-    var nellaBarra = targets.some(function (t) { return t.link.getAttribute('href') === correnteHref; });
-    var attivoHref = nellaBarra ? correnteHref : null;
-    if (indexToggle) {
-      var fuori = !!correnteHref && !nellaBarra;
-      indexToggle.style.color = fuori ? '#17506b' : '#1b1e24';
-      indexToggle.style.fontWeight = fuori ? '600' : '500';
-      indexToggle.style.borderColor = fuori ? '#17506b' : '#e5e3de';
-    }
-    /* su mobile l'indicatore sono i chip: stesso trattamento a "Tutte le
-       sezioni" della striscia, altrimenti li' il problema resterebbe */
-    if (chipsMore) {
-      var f2 = !!correnteHref && !nellaBarra;
-      chipsMore.style.background = f2 ? '#17506b' : 'transparent';
-      chipsMore.style.color = f2 ? '#fbfaf8' : '#17506b';
-      chipsMore.style.borderColor = f2 ? '#17506b' : '#c6ced3';
-      chipsMore.style.borderStyle = f2 ? 'solid' : 'dashed';
-    }
+    /* Dalla sezione corrente alla macrovoce che la contiene. La mappa e'
+       ricavata dai gruppi del pannello: ogni gruppo e' una macrovoce, e la
+       voce nella barra punta alla prima sezione del gruppo. Cosi' stando in
+       Progetti si accende "Il mio lavoro", e ogni sezione ha sempre una
+       voce corrispondente: il ripiego sul pulsante non serve piu'. */
+    var attivoHref = correnteHref ? (mappaMacro[correnteHref] || correnteHref) : null;
     /* e dentro il pannello segniamo comunque la voce corrente */
     tutteLeSezioni.forEach(function (s) {
       var on = s.href === correnteHref;
@@ -358,17 +350,20 @@
   });
 })();
 
-  /* Accordion "Tutte le sezioni" nel menu mobile */
-  var moreToggle = document.getElementById('more-toggle');
-  var moreBox = document.getElementById('more-sections');
-  if (moreToggle && moreBox) {
-    moreToggle.addEventListener('click', function () {
-      var open = moreBox.hasAttribute('hidden');
-      if (open) { moreBox.removeAttribute('hidden'); } else { moreBox.setAttribute('hidden', ''); }
-      moreToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      moreToggle.querySelector('span').textContent = open ? '\u25b4' : '\u25be';
+  /* Accordion delle macrovoci nel menu mobile. Generalizzato su data-acc:
+     prima era legato al solo "Tutte le sezioni", ora le macrovoci sono due
+     e potrebbero diventare di piu'. */
+  Array.prototype.slice.call(document.querySelectorAll('[data-acc]')).forEach(function (btn) {
+    var box = document.getElementById(btn.getAttribute('data-acc'));
+    if (!box) return;
+    btn.addEventListener('click', function () {
+      var apri = box.hasAttribute('hidden');
+      if (apri) { box.removeAttribute('hidden'); } else { box.setAttribute('hidden', ''); }
+      btn.setAttribute('aria-expanded', apri ? 'true' : 'false');
+      var freccia = btn.querySelector('span');
+      if (freccia) freccia.textContent = apri ? '▴' : '▾';
     });
-  }
+  });
 
   /* Carosello dei settori su mobile: frecce e pallini */
   var cliGrid = document.getElementById('clienti-grid');
@@ -404,19 +399,18 @@
     });
   }
 
-  /* Etichetta "Tutte le sezioni" nella barra mobile: apre il menu al secondo livello */
+  /* Il chip "Tutte le sezioni" apre il menu con tutte le macrovoci espanse */
   document.addEventListener('click', function (e) {
     var m = e.target.closest && e.target.closest('[data-chips-more]');
     if (!m) return;
     e.preventDefault();
     var nav = document.getElementById('mobile-nav');
-    var more = document.getElementById('more-sections');
     var toggle = document.getElementById('nav-toggle');
     if (nav && nav.hasAttribute('hidden') && toggle) toggle.click();
-    if (more && more.hasAttribute('hidden')) {
-      var mt = document.getElementById('more-toggle');
-      if (mt) mt.click();
-    }
+    Array.prototype.slice.call(document.querySelectorAll('[data-acc]')).forEach(function (btn) {
+      var box = document.getElementById(btn.getAttribute('data-acc'));
+      if (box && box.hasAttribute('hidden')) btn.click();
+    });
   });
 
 /* ---------- Digitazione dei titoli di sezione ----------
