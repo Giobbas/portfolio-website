@@ -75,11 +75,6 @@
 
   function spy() {
     if (headerInner) headerInner.style.height = window.scrollY > 40 ? '56px' : '66px';
-    if (toTop) {
-      var show = window.scrollY > 700;
-      toTop.style.opacity = show ? '1' : '0';
-      toTop.style.pointerEvents = show ? 'auto' : 'none';
-    }
     /* Sezione corrente cercata fra TUTTE le sezioni, non solo fra quelle
        della barra: e' quella piu' in basso che ha superato la soglia. */
     var correnteHref = null, migliore = -Infinity;
@@ -184,6 +179,19 @@
       moveParallax();
     });
   }
+  /* Il pulsante "torna su" si aggiorna direttamente sull'evento scroll,
+     fuori da requestAnimationFrame: durante lo scorrimento inerziale di iOS
+     il rAF viene rallentato, e il pulsante poteva risultare gia' visibile
+     ma ancora con pointer-events a none. Il primo tocco cadeva a vuoto. */
+  function aggiornaTornaSu() {
+    if (!toTop) return;
+    var mostra = window.scrollY > 700;
+    toTop.style.opacity = mostra ? '1' : '0';
+    toTop.style.pointerEvents = mostra ? 'auto' : 'none';
+  }
+  window.addEventListener('scroll', aggiornaTornaSu, { passive: true });
+  aggiornaTornaSu();
+
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
   spy();
