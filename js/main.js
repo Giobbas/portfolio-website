@@ -399,19 +399,6 @@
     });
   }
 
-  /* Il chip "Tutte le sezioni" apre il menu con tutte le macrovoci espanse */
-  document.addEventListener('click', function (e) {
-    var m = e.target.closest && e.target.closest('[data-chips-more]');
-    if (!m) return;
-    e.preventDefault();
-    var nav = document.getElementById('mobile-nav');
-    var toggle = document.getElementById('nav-toggle');
-    if (nav && nav.hasAttribute('hidden') && toggle) toggle.click();
-    Array.prototype.slice.call(document.querySelectorAll('[data-acc]')).forEach(function (btn) {
-      var box = document.getElementById(btn.getAttribute('data-acc'));
-      if (box && box.hasAttribute('hidden')) btn.click();
-    });
-  });
 
 /* ---------- Digitazione dei titoli di sezione ----------
    Stessa logica dell'h1, ma innescata quando il titolo entra in vista.
