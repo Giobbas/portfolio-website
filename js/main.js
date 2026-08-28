@@ -482,6 +482,14 @@
   var chips = document.getElementById('section-chips');
   var scrollSalvato = 0;
   var bloccato = false;
+  var chiusuraDaVoce = false;
+
+  /* Se il menu si chiude perche' si e' cliccata una voce, il browser sta
+     per saltare all'ancora: ripristinare lo scorrimento lo sovrascriverebbe
+     e la pagina resterebbe dov'era. */
+  nav.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('a[href^="#"]')) chiusuraDaVoce = true;
+  }, true);
   if (!scrim || !nav) return;
 
   function sincronizza() {
@@ -521,10 +529,16 @@
         bloccato = false;
         /* ripristino senza animazione: se il menu si e' chiuso cliccando
            una voce, subito dopo il browser salta all'ancora e vince lui */
-        var c = document.documentElement.style.scrollBehavior;
-        document.documentElement.style.scrollBehavior = 'auto';
-        window.scrollTo(0, scrollSalvato);
-        document.documentElement.style.scrollBehavior = c;
+        if (chiusuraDaVoce) {
+          /* niente ripristino: tolto il corpo fisso lo scorrimento e' a zero
+             e subito dopo l'ancora porta alla sezione giusta */
+          chiusuraDaVoce = false;
+        } else {
+          var c = document.documentElement.style.scrollBehavior;
+          document.documentElement.style.scrollBehavior = 'auto';
+          window.scrollTo(0, scrollSalvato);
+          document.documentElement.style.scrollBehavior = c;
+        }
       }
       var chiudi = function () { if (!scrim.classList.contains('visibile')) scrim.setAttribute('hidden', ''); };
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) chiudi();
