@@ -8,7 +8,7 @@
   --soft: #5f656c;
   --bg: #fbfaf8;
   --bg-tint: #f1f4f5;
-  --bg-accent: #eaf1f5;
+  --bg-accent: #e6f2f4;
   --line: #e5e3de;
   --line-soft: #dfe6e9;
   --petrol: #185c68;
@@ -75,15 +75,15 @@ html { scroll-behavior: smooth; }
 .x4:hover{color:#185c68}
 .x5:hover{color:#185c68}
 .x6:hover{background:#114650}
-.x7:hover{background:#eaf1f5;color:#185c68}
-.x8:hover{background:#eaf1f5;color:#185c68}
-.x9:hover{background:#eaf1f5;color:#185c68}
-.x10:hover{background:#eaf1f5;color:#185c68}
-.x11:hover{background:#eaf1f5;color:#185c68}
-.x12:hover{background:#eaf1f5;color:#185c68}
-.x13:hover{background:#eaf1f5;color:#185c68}
-.x14:hover{background:#eaf1f5;color:#185c68}
-.x15:hover{background:#eaf1f5;color:#185c68}
+.x7:hover{background:#e6f2f4;color:#185c68}
+.x8:hover{background:#e6f2f4;color:#185c68}
+.x9:hover{background:#e6f2f4;color:#185c68}
+.x10:hover{background:#e6f2f4;color:#185c68}
+.x11:hover{background:#e6f2f4;color:#185c68}
+.x12:hover{background:#e6f2f4;color:#185c68}
+.x13:hover{background:#e6f2f4;color:#185c68}
+.x14:hover{background:#e6f2f4;color:#185c68}
+.x15:hover{background:#e6f2f4;color:#185c68}
 .x16:hover{transform:translateY(-3px);border-color:#185c68;box-shadow:0 10px 26px rgba(16,59,78,.10)}
 .x17:hover{transform:translateY(-3px);border-color:#185c68;box-shadow:0 10px 26px rgba(16,59,78,.10)}
 .x18:hover{transform:translateY(-3px);border-color:#185c68;box-shadow:0 10px 26px rgba(16,59,78,.10)}
