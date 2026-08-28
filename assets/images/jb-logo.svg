@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">JB monogram</title>
+  <desc id="desc">Monogramma JB color petrolio #185c68 su sfondo trasparente</desc>
+  <g fill="none" stroke="#185c68" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M255 112 V330              C255 392 221 425 169 425              C129 425 101 407 89 377"></path>
+    <path d="M255 112 H332              C383 112 418 142 418 187              C418 228 387 257 338 257              H285              M285 257 H344              C396 257 430 288 430 334              C430 384 392 416 337 416              H285              V257"></path>
+  </g>
+</svg>
