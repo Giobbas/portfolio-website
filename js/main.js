@@ -108,7 +108,7 @@
     /* e dentro il pannello segniamo comunque la voce corrente */
     tutteLeSezioni.forEach(function (s) {
       var on = s.href === correnteHref;
-      s.link.style.color = on ? '#17506b' : '';
+      s.link.style.color = on ? '#185c68' : '';
       s.link.style.fontWeight = on ? '600' : '';
     });
     targets.forEach(function (t) {
@@ -116,8 +116,8 @@
          accendono insieme, invece di escludersi a vicenda */
       var on = t.link.getAttribute('href') === attivoHref;
       if (t.link.hasAttribute('data-chip')) {
-        t.link.style.background = on ? '#17506b' : '#fbfaf8';
-        t.link.style.borderColor = on ? '#17506b' : '#dfe6e9';
+        t.link.style.background = on ? '#185c68' : '#fbfaf8';
+        t.link.style.borderColor = on ? '#185c68' : '#dfe6e9';
         t.link.style.color = on ? '#fbfaf8' : '#1b1e24';
         t.link.style.fontWeight = on ? '600' : '500';
         if (on) {
@@ -126,9 +126,9 @@
         }
         return;
       }
-      t.link.style.color = on ? '#17506b' : '#1b1e24';
+      t.link.style.color = on ? '#185c68' : '#1b1e24';
       t.link.style.fontWeight = on ? '600' : '500';
-      t.link.style.borderBottomColor = on ? '#17506b' : 'transparent';
+      t.link.style.borderBottomColor = on ? '#185c68' : 'transparent';
     });
   }
 
@@ -145,10 +145,10 @@
     var reached = r.top + r.height * ratio;
     Array.prototype.forEach.call(wrap.querySelectorAll('[data-marker]'), function (m) {
       var on = m.getBoundingClientRect().top <= reached + 8;
-      m.style.borderColor = on ? '#17506b' : '#dfe6e9';
+      m.style.borderColor = on ? '#185c68' : '#dfe6e9';
       var dot = m.querySelector('[data-dot]');
       if (dot) {
-        dot.style.background = on ? '#17506b' : '#dfe6e9';
+        dot.style.background = on ? '#185c68' : '#dfe6e9';
         dot.style.transform = on ? 'scale(1.15)' : 'scale(1)';
       }
     });
@@ -209,7 +209,7 @@
       /* roving tabindex: nel tab sequence entra solo la tab attiva,
          alle altre si arriva con le frecce (pattern ARIA per i tablist) */
       t.setAttribute('tabindex', on ? '0' : '-1');
-      t.style.borderColor = on ? '#17506b' : '#e5e3de';
+      t.style.borderColor = on ? '#185c68' : '#e5e3de';
       var img = t.querySelector('img');
       if (img) { img.style.filter = on ? 'none' : 'grayscale(1)'; img.style.opacity = on ? '1' : '.5'; }
       var label = t.querySelectorAll('span')[1];
@@ -220,7 +220,7 @@
       else { p.setAttribute('hidden', ''); p.style.display = 'none'; }
     });
     document.querySelectorAll('[data-proj-dot]').forEach(function (d, k) {
-      d.style.background = k === i ? '#17506b' : '#d3d8dc';
+      d.style.background = k === i ? '#185c68' : '#d3d8dc';
       d.style.transform = k === i ? 'scale(1.25)' : 'none';
     });
     var strip = projTabs[0] && projTabs[0].parentElement;
@@ -374,7 +374,7 @@
       if (!cs.length) return;
       var i = Math.round(cliGrid.scrollLeft / (cs[0].offsetWidth + 14));
       document.querySelectorAll('[data-cli-dot]').forEach(function (d, k) {
-        d.style.background = k === i ? '#17506b' : '#d3d8dc';
+        d.style.background = k === i ? '#185c68' : '#d3d8dc';
         d.style.transform = k === i ? 'scale(1.3)' : 'none';
       });
     };

@@ -11,8 +11,8 @@
   --bg-accent: #eaf1f5;
   --line: #e5e3de;
   --line-soft: #dfe6e9;
-  --petrol: #17506b;
-  --petrol-dark: #0f3a4e;
+  --petrol: #185c68;
+  --petrol-dark: #114650;
   --petrol-deep: #103b4e;
   --sand: #faf5ea;
   --sand-strong: #f3e5c6;
@@ -24,11 +24,11 @@
 html { scroll-behavior: smooth; }
   body { margin:0; background:#fbfaf8; color:#1b1e24; font-family:'Instrument Sans', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing:antialiased; }
   * { box-sizing: border-box; }
-  a { color:#17506b; text-decoration:none; }
-  a:hover { color:#0f3a4e; }
+  a { color:#185c68; text-decoration:none; }
+  a:hover { color:#114650; }
   h1,h2,h3,h4,p,ul,ol,li,figure { margin:0; }
   ul { padding:0; list-style:none; }
-  :focus-visible { outline:2px solid #17506b; outline-offset:3px; border-radius:3px; }
+  :focus-visible { outline:2px solid #185c68; outline-offset:3px; border-radius:3px; }
   @media (max-width: 860px) {
     #seo-geo h2 { white-space: normal !important; }
   }
@@ -69,48 +69,48 @@ html { scroll-behavior: smooth; }
 #clienti-nav { display: none; }
 
 /* stati hover e pseudo-elementi estratti dal markup */
-.x1:hover{color:#17506b}
-.x2:hover{color:#17506b}
-.x3:hover{color:#17506b}
-.x4:hover{color:#17506b}
-.x5:hover{color:#17506b}
-.x6:hover{background:#0f3a4e}
-.x7:hover{background:#eaf1f5;color:#17506b}
-.x8:hover{background:#eaf1f5;color:#17506b}
-.x9:hover{background:#eaf1f5;color:#17506b}
-.x10:hover{background:#eaf1f5;color:#17506b}
-.x11:hover{background:#eaf1f5;color:#17506b}
-.x12:hover{background:#eaf1f5;color:#17506b}
-.x13:hover{background:#eaf1f5;color:#17506b}
-.x14:hover{background:#eaf1f5;color:#17506b}
-.x15:hover{background:#eaf1f5;color:#17506b}
-.x16:hover{transform:translateY(-3px);border-color:#17506b;box-shadow:0 10px 26px rgba(16,59,78,.10)}
-.x17:hover{transform:translateY(-3px);border-color:#17506b;box-shadow:0 10px 26px rgba(16,59,78,.10)}
-.x18:hover{transform:translateY(-3px);border-color:#17506b;box-shadow:0 10px 26px rgba(16,59,78,.10)}
-.x19:hover{transform:translateY(-3px);border-color:#17506b;box-shadow:0 10px 26px rgba(16,59,78,.10)}
-.x20:hover{transform:translateY(-2px);border-color:#17506b}
-.x21:hover{transform:translateY(-2px);border-color:#17506b}
-.x22:hover{transform:translateY(-2px);border-color:#17506b}
-.x23:hover{transform:translateY(-2px);border-color:#17506b}
-.x24:hover{transform:translateY(-2px);border-color:#17506b}
-.x25:hover{transform:translateY(-3px);border-color:#17506b;box-shadow:0 10px 26px rgba(16,59,78,.10)}
-.x26:hover{transform:translateY(-3px);border-color:#17506b;box-shadow:0 10px 26px rgba(16,59,78,.10)}
-.x27:hover{transform:translateY(-3px);border-color:#17506b;box-shadow:0 10px 26px rgba(16,59,78,.10)}
-.x28:hover{transform:translateY(-3px);border-color:#17506b;box-shadow:0 10px 26px rgba(16,59,78,.10)}
-.x29:hover{transform:translateY(-3px);border-color:#17506b;box-shadow:0 10px 26px rgba(16,59,78,.10)}
-.x30:hover{transform:translateY(-3px);border-color:#17506b}
-.x31:hover{transform:translateY(-3px);border-color:#17506b}
-.x32:hover{transform:translateY(-3px);border-color:#17506b}
-.x33:hover{transform:translateY(-3px);border-color:#17506b}
-.x34:hover{transform:translateY(-3px);border-color:#17506b}
-.x35:hover{transform:translateY(-3px);border-color:#17506b}
-.x36:hover{transform:translateY(-3px);border-color:#17506b}
-.x37:hover{transform:translateY(-3px);border-color:#17506b}
-.x38:hover{transform:translateY(-3px);border-color:#17506b}
+.x1:hover{color:#185c68}
+.x2:hover{color:#185c68}
+.x3:hover{color:#185c68}
+.x4:hover{color:#185c68}
+.x5:hover{color:#185c68}
+.x6:hover{background:#114650}
+.x7:hover{background:#eaf1f5;color:#185c68}
+.x8:hover{background:#eaf1f5;color:#185c68}
+.x9:hover{background:#eaf1f5;color:#185c68}
+.x10:hover{background:#eaf1f5;color:#185c68}
+.x11:hover{background:#eaf1f5;color:#185c68}
+.x12:hover{background:#eaf1f5;color:#185c68}
+.x13:hover{background:#eaf1f5;color:#185c68}
+.x14:hover{background:#eaf1f5;color:#185c68}
+.x15:hover{background:#eaf1f5;color:#185c68}
+.x16:hover{transform:translateY(-3px);border-color:#185c68;box-shadow:0 10px 26px rgba(16,59,78,.10)}
+.x17:hover{transform:translateY(-3px);border-color:#185c68;box-shadow:0 10px 26px rgba(16,59,78,.10)}
+.x18:hover{transform:translateY(-3px);border-color:#185c68;box-shadow:0 10px 26px rgba(16,59,78,.10)}
+.x19:hover{transform:translateY(-3px);border-color:#185c68;box-shadow:0 10px 26px rgba(16,59,78,.10)}
+.x20:hover{transform:translateY(-2px);border-color:#185c68}
+.x21:hover{transform:translateY(-2px);border-color:#185c68}
+.x22:hover{transform:translateY(-2px);border-color:#185c68}
+.x23:hover{transform:translateY(-2px);border-color:#185c68}
+.x24:hover{transform:translateY(-2px);border-color:#185c68}
+.x25:hover{transform:translateY(-3px);border-color:#185c68;box-shadow:0 10px 26px rgba(16,59,78,.10)}
+.x26:hover{transform:translateY(-3px);border-color:#185c68;box-shadow:0 10px 26px rgba(16,59,78,.10)}
+.x27:hover{transform:translateY(-3px);border-color:#185c68;box-shadow:0 10px 26px rgba(16,59,78,.10)}
+.x28:hover{transform:translateY(-3px);border-color:#185c68;box-shadow:0 10px 26px rgba(16,59,78,.10)}
+.x29:hover{transform:translateY(-3px);border-color:#185c68;box-shadow:0 10px 26px rgba(16,59,78,.10)}
+.x30:hover{transform:translateY(-3px);border-color:#185c68}
+.x31:hover{transform:translateY(-3px);border-color:#185c68}
+.x32:hover{transform:translateY(-3px);border-color:#185c68}
+.x33:hover{transform:translateY(-3px);border-color:#185c68}
+.x34:hover{transform:translateY(-3px);border-color:#185c68}
+.x35:hover{transform:translateY(-3px);border-color:#185c68}
+.x36:hover{transform:translateY(-3px);border-color:#185c68}
+.x37:hover{transform:translateY(-3px);border-color:#185c68}
+.x38:hover{transform:translateY(-3px);border-color:#185c68}
 .x39:hover{background:#c3d9e4;border-color:#c3d9e4}
 .x40:hover{background:rgba(251,250,248,.10);border-color:#fbfaf8}
 .x41:hover{background:rgba(251,250,248,.10);border-color:#fbfaf8}
-.x42:hover{background:#0f3a4e;transform:translateY(-3px)}
+.x42:hover{background:#114650;transform:translateY(-3px)}
 
 /* --- Header su schermi stretti ---------------------------------------
    Sotto i 1040px compaiono #nav-cv e #nav-toggle accanto al logo.
@@ -157,7 +157,7 @@ html { scroll-behavior: smooth; }
   left: -9999px;
   top: 0;
   z-index: 100;
-  background: #17506b;
+  background: #185c68;
   color: #fbfaf8;
   padding: 12px 20px;
   border-radius: 0 0 8px 0;
@@ -192,6 +192,6 @@ button[data-cli-move][disabled] {
   height: .78em;
   margin-left: .06em;
   vertical-align: -.06em;
-  background: #17506b;
+  background: #185c68;
   opacity: .55;
 }
