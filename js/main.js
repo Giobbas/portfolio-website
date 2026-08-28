@@ -107,8 +107,10 @@
     /* e dentro il pannello segniamo comunque la voce corrente */
     tutteLeSezioni.forEach(function (s) {
       var on = s.href === correnteHref;
-      s.link.style.color = on ? '#185c68' : '';
-      s.link.style.fontWeight = on ? '600' : '';
+      /* ripristino esplicito: azzerare con '' toglieva l'inline e il link
+         ricadeva sulla regola globale a{color}, diventando petrolio come
+         l'etichetta del gruppo e annullando la gerarchia */
+      s.link.style.color = on ? '#185c68' : '#1b1e24';
     });
     targets.forEach(function (t) {
       /* confronto per href: cosi barra e chip della stessa sezione si
