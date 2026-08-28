@@ -218,5 +218,5 @@ button[data-cli-move][disabled] {
 /* La freccina di "Tutte le sezioni" ruota quando il pannello e' aperto:
    senza, non c'era nessun segnale visivo che fosse aperto ne' come
    richiuderlo. Lo stato lo detta aria-expanded, gia' presente. */
-#index-toggle span { transition: transform .2s ease; }
+#index-toggle span { display: inline-block; transition: transform .2s ease; }
 #index-toggle[aria-expanded="true"] span { transform: rotate(180deg); }
