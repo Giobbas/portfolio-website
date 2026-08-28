@@ -220,3 +220,23 @@ button[data-cli-move][disabled] {
    richiuderlo. Lo stato lo detta aria-expanded, gia' presente. */
 #index-toggle span { display: inline-block; transition: transform .2s ease; }
 #index-toggle[aria-expanded="true"] span { transform: rotate(180deg); }
+
+/* --- Strato dietro il menu mobile ------------------------------------
+   Il menu vive dentro l'header sticky e sotto continua a scorrere la
+   pagina: senza separazione i due si confondono. Lo strato sta a
+   z-index 45, cioe' sopra il contenuto e sotto l'header (50), cosi'
+   copre la pagina ma non il menu. */
+#menu-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  background: rgba(15, 66, 73, .42);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity .22s ease;
+}
+#menu-scrim.visibile { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  #menu-scrim { transition: none; }
+}

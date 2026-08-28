@@ -52,6 +52,7 @@
   /* ---------- Voce di menu attiva, header compatto, torna su ---------- */
   var headerInner = document.getElementById('header-inner');
   var toTop = document.getElementById('to-top');
+  var chips = document.getElementById('section-chips');
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('#nav-links a[href^="#"], #section-chips a[data-chip]'));
   var targets = navLinks.map(function (a) {
     return { link: a, el: document.querySelector(a.getAttribute('href')) };
@@ -467,5 +468,47 @@
     window.scrollTo({ top: 0, behavior: dolce ? 'smooth' : 'auto' });
     var main = document.getElementById('top');
     if (main) main.focus({ preventScroll: true });
+  });
+})();
+
+/* ---------- Strato dietro il menu mobile ----------
+   Osserviamo l'attributo hidden di #mobile-nav invece di agganciarci
+   al pulsante: il menu si chiude anche cliccando una voce o dai chip,
+   e cosi' lo strato resta sincronizzato su ogni percorso. */
+(function () {
+  'use strict';
+  var scrim = document.getElementById('menu-scrim');
+  var nav = document.getElementById('mobile-nav');
+  var toTop = document.getElementById('to-top');
+  if (!scrim || !nav) return;
+
+  function sincronizza() {
+    var aperto = !nav.hasAttribute('hidden');
+    if (aperto) {
+      scrim.removeAttribute('hidden');
+      /* forza un reflow prima di aggiungere la classe, altrimenti la
+         transizione non parte: l'elemento e' appena uscito da hidden */
+      void scrim.offsetWidth;
+      scrim.classList.add('visibile');
+      if (toTop) toTop.style.visibility = 'hidden';
+      /* i chip sono mostrati da una regola con !important: per coprirla
+         serve impostare la proprieta' con la stessa priorita' */
+      if (chips) chips.style.setProperty('display', 'none', 'important');
+    } else {
+      scrim.classList.remove('visibile');
+      if (toTop) toTop.style.visibility = '';
+      if (chips) chips.style.removeProperty('display');
+      var chiudi = function () { if (!scrim.classList.contains('visibile')) scrim.setAttribute('hidden', ''); };
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) chiudi();
+      else setTimeout(chiudi, 240);
+    }
+  }
+
+  new MutationObserver(sincronizza).observe(nav, { attributes: true, attributeFilter: ['hidden'] });
+
+  /* toccare lo strato chiude il menu */
+  scrim.addEventListener('click', function () {
+    var t = document.getElementById('nav-toggle');
+    if (t && !nav.hasAttribute('hidden')) t.click();
   });
 })();
