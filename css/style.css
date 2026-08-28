@@ -246,3 +246,19 @@ button[data-cli-move][disabled] {
 @media (prefers-reduced-motion: reduce) {
   #menu-scrim { transition: none; }
 }
+
+/* --- Trascinamento del carosello clienti -----------------------------
+   Su iOS un trascinamento che parte su testo selezionabile puo' avviare
+   una selezione invece dello scorrimento: il paragrafo occupa il 36%
+   della card, quindi capitava spesso. Qui la card e' una superficie da
+   trascinare, non da selezionare.
+   -webkit-touch-callout evita anche il menu contestuale da pressione
+   prolungata, che interrompeva il gesto a meta'. */
+@media (max-width: 1040px) {
+  #clienti-grid,
+  #clienti-grid * {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+}
