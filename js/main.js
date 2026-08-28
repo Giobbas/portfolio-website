@@ -262,6 +262,45 @@
     projTabs[n].focus();
   });
 
+  /* ---------- Swipe sulla scheda del progetto ----------
+     Finora si cambiava progetto solo dai loghi o dalle frecce. Qui il
+     gesto funziona anche sulla scheda di testo sotto.
+     La direzione si decide al primo movimento apprezzabile e non si
+     cambia piu': senza questo, uno scorrimento verticale della pagina
+     che devia un po' farebbe cambiare progetto per sbaglio. Il
+     margine di 1.3 chiede che il gesto sia nettamente orizzontale. */
+  (function () {
+    var contenitore = projPanels[0] && projPanels[0].parentElement;
+    if (!contenitore || projPanels.length < 2) return;
+    var x0 = 0, y0 = 0, deciso = false, orizzontale = false, attivo = false;
+
+    contenitore.addEventListener('touchstart', function (e) {
+      if (e.touches.length !== 1) return;
+      x0 = e.touches[0].clientX;
+      y0 = e.touches[0].clientY;
+      deciso = false; orizzontale = false; attivo = true;
+    }, { passive: true });
+
+    contenitore.addEventListener('touchmove', function (e) {
+      if (!attivo || deciso || e.touches.length !== 1) return;
+      var dx = Math.abs(e.touches[0].clientX - x0);
+      var dy = Math.abs(e.touches[0].clientY - y0);
+      if (dx > 10 || dy > 10) { deciso = true; orizzontale = dx > dy * 1.3; }
+    }, { passive: true });
+
+    contenitore.addEventListener('touchend', function (e) {
+      if (!attivo) return;
+      attivo = false;
+      if (!orizzontale) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) < 45) return;
+      var next = projIndex + (dx < 0 ? 1 : -1);
+      /* si ferma ai capi, come le frecce */
+      if (next < 0 || next > projPanels.length - 1) return;
+      selectProject(next);
+    }, { passive: true });
+  })();
+
   /* ---------- Contatori dei numeri chiave ---------- */
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
     var counters = document.querySelectorAll('[data-count]');
