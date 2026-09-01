@@ -683,6 +683,10 @@
     xPartenza = e.clientX;
     scrollPartenza = car.scrollLeft;
     car.classList.add('trascino');
+    /* lo snap e' dichiarato inline, quindi una classe CSS non lo coprirebbe:
+       va sospeso qui, altrimenti riporta lo scorrimento al punto di aggancio
+       mentre lo si trascina */
+    car.style.scrollSnapType = 'none';
   });
   window.addEventListener('pointermove', function (e) {
     if (!giu) return;
@@ -694,6 +698,7 @@
     if (!giu) return;
     giu = false;
     car.classList.remove('trascino');
+    car.style.scrollSnapType = '';
     sincronizza();
   });
   /* dopo un trascinamento il rilascio non deve valere come clic */
