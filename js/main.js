@@ -698,7 +698,7 @@
     if (!giu) return;
     giu = false;
     car.classList.remove('trascino');
-    car.style.scrollSnapType = '';
+    car.style.scrollSnapType = snapOriginale;
     sincronizza();
   });
   /* dopo un trascinamento il rilascio non deve valere come clic */
