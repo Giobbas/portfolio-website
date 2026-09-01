@@ -616,7 +616,24 @@
   var next = document.querySelector('[data-ref-move="1"]');
 
   function passo() { return schede[0].offsetWidth + 16; }
-  function indice() { return Math.round(car.scrollLeft / passo()); }
+
+  /* L'indice non si ricava dividendo lo scorrimento per il passo: l'ultima
+     scheda diventa visibile prima che lo scorrimento raggiunga il suo
+     multiplo, quindi in fondo restava acceso il quarto pallino e sembrava
+     ci fosse ancora una scheda dopo l'ultima. Qui si cerca la scheda piu'
+     vicina al bordo sinistro, e a fine corsa si forza l'ultima. */
+  function indice() {
+    var max = car.scrollWidth - car.clientWidth;
+    if (max <= 0) return 0;
+    if (car.scrollLeft >= max - 2) return schede.length - 1;
+    var origine = schede[0].offsetLeft;
+    var migliore = 0, minima = Infinity;
+    schede.forEach(function (s, k) {
+      var d = Math.abs((s.offsetLeft - origine) - car.scrollLeft);
+      if (d < minima) { minima = d; migliore = k; }
+    });
+    return migliore;
+  }
 
   function sincronizza() {
     var i = indice();
@@ -654,5 +671,35 @@
     });
   });
 
+
+  /* Trascinamento col mouse: su desktop non c'e' lo swipe, e senza questo
+     l'unico modo di scorrere sarebbero le frecce. Durante il trascinamento
+     lo scroll-snap viene sospeso, altrimenti combatte col movimento. */
+  var giu = false, xPartenza = 0, scrollPartenza = 0, mosso = false;
+  car.addEventListener('pointerdown', function (e) {
+    if (e.pointerType !== 'mouse') return;
+    if (e.target.closest && e.target.closest('button, a')) return;
+    giu = true; mosso = false;
+    xPartenza = e.clientX;
+    scrollPartenza = car.scrollLeft;
+    car.classList.add('trascino');
+  });
+  window.addEventListener('pointermove', function (e) {
+    if (!giu) return;
+    var dx = e.clientX - xPartenza;
+    if (Math.abs(dx) > 3) mosso = true;
+    car.scrollLeft = scrollPartenza - dx;
+  });
+  window.addEventListener('pointerup', function () {
+    if (!giu) return;
+    giu = false;
+    car.classList.remove('trascino');
+    sincronizza();
+  });
+  /* dopo un trascinamento il rilascio non deve valere come clic */
+  car.addEventListener('click', function (e) {
+    if (!mosso) return;
+    e.preventDefault(); e.stopPropagation(); mosso = false;
+  }, true);
   sincronizza();
 })();

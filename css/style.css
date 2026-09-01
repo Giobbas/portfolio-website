@@ -276,18 +276,40 @@ button[data-cli-move][disabled] {
   user-select: none;
   -webkit-touch-callout: none;
 }
-/* Testo tagliato a nove righe: in un carosello tutte le schede prendono
-   l'altezza della piu' lunga, e una referenza da duecento parole
-   imporrebbe quella misura anche alle altre quattro. Il testo resta
-   intero nel DOM, quindi gli screen reader lo leggono per esteso. */
+/* Il testo si taglia con un'altezza massima, non con -webkit-line-clamp:
+   quest'ultimo, su un blocco che contiene piu' <p>, si comporta male e in
+   espansione sovrapponeva le righe. La sfumatura in basso fa leggere il
+   taglio come voluto, invece che come una riga mozzata a meta'.
+   Il testo resta intero nel DOM: gli screen reader lo leggono per esteso. */
 #referenze-carosello [data-ref-testo] {
-  display: -webkit-box;
-  -webkit-line-clamp: 9;
-  -webkit-box-orient: vertical;
+  position: relative;
+  max-height: 16em;
   overflow: hidden;
 }
-#referenze-carosello article.aperta [data-ref-testo] {
-  display: block;
-  overflow: visible;
+#referenze-carosello [data-ref-testo]::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 3.4em;
+  background: linear-gradient(to bottom, rgba(251,250,248,0), #fbfaf8 80%);
+  pointer-events: none;
 }
+#referenze-carosello article.aperta [data-ref-testo] { max-height: none; }
+#referenze-carosello article.aperta [data-ref-testo]::after { display: none; }
 #referenze-nav { display: flex; }
+
+/* Frecce del carosello referenze: risposta al passaggio del mouse, cosi'
+   su desktop si capisce che sono cliccabili. Dentro (hover: hover) come
+   tutte le altre, per non innescare il doppio tocco su iOS. */
+@media (hover: hover) {
+  [data-ref-move]:not([disabled]):hover {
+    background: #185c68;
+    border-color: #185c68;
+    color: #fbfaf8;
+  }
+}
+[data-ref-move] { transition: background .18s ease, border-color .18s ease, color .18s ease; }
+[data-ref-move][disabled] { opacity: .3; cursor: default; }
+/* durante il trascinamento col mouse il cursore lo dichiara */
+#referenze-carosello { cursor: grab; }
+#referenze-carosello.trascino { cursor: grabbing; scroll-snap-type: none; }
