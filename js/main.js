@@ -676,6 +676,10 @@
      l'unico modo di scorrere sarebbero le frecce. Durante il trascinamento
      lo scroll-snap viene sospeso, altrimenti combatte col movimento. */
   var giu = false, xPartenza = 0, scrollPartenza = 0, mosso = false;
+  /* il valore di partenza va memorizzato: svuotare la proprieta' inline
+     cancellerebbe la dichiarazione, lasciando il carosello senza aggancio
+     dopo il primo trascinamento */
+  var snapOriginale = car.style.scrollSnapType;
   car.addEventListener('pointerdown', function (e) {
     if (e.pointerType !== 'mouse') return;
     if (e.target.closest && e.target.closest('button, a')) return;
