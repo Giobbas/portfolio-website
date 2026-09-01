@@ -314,3 +314,11 @@ button[data-cli-move][disabled] {
 /* durante il trascinamento col mouse il cursore lo dichiara */
 #referenze-carosello { cursor: grab; }
 #referenze-carosello.trascino { cursor: grabbing; scroll-snap-type: none; }
+
+/* Sotto i 390px la relazione piu' lunga non entra su una riga: servirebbero
+   255px e la scheda ne lascia 244. Riservando le due righe il piede parte
+   alla stessa altezza su tutte le schede, invece di accorciare le parole
+   di chi ha scritto la referenza. */
+@media (max-width: 430px) {
+  #referenze-carosello footer p:last-child { min-height: 2.4em; }
+}
