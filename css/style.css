@@ -315,10 +315,18 @@ button[data-cli-move][disabled] {
 #referenze-carosello { cursor: grab; }
 #referenze-carosello.trascino { cursor: grabbing; scroll-snap-type: none; }
 
-/* Sotto i 390px la relazione piu' lunga non entra su una riga: servirebbero
-   255px e la scheda ne lascia 244. Riservando le due righe il piede parte
-   alla stessa altezza su tutte le schede, invece di accorciare le parole
-   di chi ha scritto la referenza. */
+/* Sui telefoni le due righe finali del piede vanno a capo su alcune schede
+   e non su altre, e il piede parte ad altezze diverse. Lo spazio viene
+   riservato invece di accorciare le parole di chi ha scritto la referenza.
+
+   Relazione: la piu' lunga chiede 255px e la scheda ne lascia 244 a 375px;
+   a 390px il margine e' di soli 2px, troppo esiguo per fidarsi, quindi la
+   riserva copre fino a 430.
+   Ruolo: il piu' lungo chiede una scheda da 282px, cioe' una finestra da
+   368px. A 390px restano 19px di margine, percio' li' non serve. */
 @media (max-width: 430px) {
   #referenze-carosello footer p:last-child { min-height: 2.4em; }
+}
+@media (max-width: 385px) {
+  #referenze-carosello footer p:nth-child(2) { min-height: 2.4em; }
 }
