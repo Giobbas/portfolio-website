@@ -702,7 +702,12 @@
     if (!giu) return;
     giu = false;
     car.classList.remove('trascino');
+    /* la scheda va scelta adesso, con l'aggancio ancora sospeso: se lo si
+       riattiva prima, il browser riporta lo scorrimento al punto di partenza
+       e il trascinamento sembra annullarsi */
+    var dove = indice() * passo();
     car.style.scrollSnapType = snapOriginale;
+    car.scrollTo({ left: dove, behavior: 'smooth' });
     sincronizza();
   });
   /* dopo un trascinamento il rilascio non deve valere come clic */
