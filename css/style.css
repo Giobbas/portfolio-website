@@ -262,3 +262,32 @@ button[data-cli-move][disabled] {
     -webkit-touch-callout: none;
   }
 }
+
+/* --- Carosello delle referenze ---------------------------------------
+   Le schede lasciano sbirciare la successiva: un bordo di card visibile
+   dice che c'e' altro da scorrere meglio di qualsiasi freccia. */
+#referenze-carosello { --ref-w: 62%; }
+@media (max-width: 900px) { #referenze-carosello { --ref-w: 86%; } }
+#referenze-carosello::-webkit-scrollbar { display: none; }
+/* il trascinamento vince sulla selezione del testo, come nel carosello
+   dei clienti: qui scorrere e' l'interazione principale */
+#referenze-carosello, #referenze-carosello * {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+/* Testo tagliato a nove righe: in un carosello tutte le schede prendono
+   l'altezza della piu' lunga, e una referenza da duecento parole
+   imporrebbe quella misura anche alle altre quattro. Il testo resta
+   intero nel DOM, quindi gli screen reader lo leggono per esteso. */
+#referenze-carosello [data-ref-testo] {
+  display: -webkit-box;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+#referenze-carosello article.aperta [data-ref-testo] {
+  display: block;
+  overflow: visible;
+}
+#referenze-nav { display: flex; }

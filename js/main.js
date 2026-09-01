@@ -601,3 +601,58 @@
     if (t && !nav.hasAttribute('hidden')) t.click();
   });
 })();
+
+/* ---------- Carosello delle referenze ----------
+   Lo scorrimento e' nativo con scroll-snap, quindi lo swipe funziona
+   da solo. Qui si aggiungono frecce, indicatori e il "leggi tutto". */
+(function () {
+  'use strict';
+  var car = document.getElementById('referenze-carosello');
+  if (!car) return;
+  var schede = Array.prototype.slice.call(car.children);
+  if (!schede.length) return;
+  var dots = Array.prototype.slice.call(document.querySelectorAll('[data-ref-dot]'));
+  var prev = document.querySelector('[data-ref-move="-1"]');
+  var next = document.querySelector('[data-ref-move="1"]');
+
+  function passo() { return schede[0].offsetWidth + 16; }
+  function indice() { return Math.round(car.scrollLeft / passo()); }
+
+  function sincronizza() {
+    var i = indice();
+    var max = car.scrollWidth - car.clientWidth;
+    dots.forEach(function (d, k) {
+      d.style.background = k === i ? '#185c68' : '#d3d8dc';
+      d.style.transform = k === i ? 'scale(1.3)' : 'none';
+    });
+    if (prev) prev.disabled = car.scrollLeft <= 2;
+    if (next) next.disabled = car.scrollLeft >= max - 2;
+  }
+
+  car.addEventListener('scroll', sincronizza, { passive: true });
+  window.addEventListener('resize', sincronizza);
+  [prev, next].forEach(function (b) {
+    if (!b) return;
+    b.addEventListener('click', function () {
+      car.scrollBy({ left: Number(b.getAttribute('data-ref-move')) * passo(), behavior: 'smooth' });
+    });
+  });
+
+  /* Il pulsante compare solo dove il testo e' davvero tagliato: su una
+     referenza breve sarebbe un invito a espandere il nulla. */
+  schede.forEach(function (s) {
+    var testo = s.querySelector('[data-ref-testo]');
+    var bottone = s.querySelector('[data-ref-piu]');
+    if (!testo || !bottone) return;
+    if (testo.scrollHeight - testo.clientHeight < 4) return;
+    bottone.removeAttribute('hidden');
+    bottone.addEventListener('click', function () {
+      var aperta = s.classList.toggle('aperta');
+      bottone.setAttribute('aria-expanded', aperta ? 'true' : 'false');
+      bottone.textContent = aperta ? 'Mostra meno' : 'Leggi tutto';
+      sincronizza();
+    });
+  });
+
+  sincronizza();
+})();
